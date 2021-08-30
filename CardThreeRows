@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="js_chart">&nbsp;</div>
+
+    <script>
+        function drawCard(options) {
+            // extracting options
+            var labelFz = options && options.labelFontSize ? options.labelFontSize + 'px' : '12px';
+            var valFz = options && options.valueFontSize ? options.valueFontSize + 'px' : '16px';
+            var labelFc = options && options.labelFontColor ? options.labelFontColor : '#000';
+            var valFc = options && options.valueFontColor ? options.valueFontColor : '#000';
+            var thirdValFz = options && options.thirdValueFontSize ? options.thirdValueFontSize + 'px' : '12px';
+            var barHeight = options && options.barHeight ? options.barHeight + 'px' : '9px';
+            var firstValPre = options && options.firstValPre ? options.firstValPre : '';
+            var secondValPre = options && options.secondValPre ? options.secondValPre : '';
+            var firstValPost = options && options.firstValPost ? options.firstValPost : '';
+            var secondValPost = options && options.secondValPost ? options.secondValPost : '';
+            var firstVal = options && options.firstVal ? options.firstVal : '';
+            var secondVal = options && options.secondVal ? options.secondVal : '';
+            var firstLabel = options && options.firstLabel ? options.firstLabel : '';
+            var secondLabel = options && options.secondLabel ? options.secondLabel : '';
+            var thirdLabel = options && options.thirdLabel ? options.thirdLabel : '';
+            var thirdVal = options && options.thirdVal ? options.thirdVal : '';
+            var baseVal = options && options.baseVal ? options.baseVal : calculateBase(firstVal, secondVal);
+            var showFirstBar = options && options.showFirstBar;  
+            var showSecondBar = options && options.showSecondBar; 
+            var showThirdBar = options && options.showThirdBar; 
+
+            // uuid
+            let u = Date.now().toString(16) + Math.random().toString(16) + '0'.repeat(16);
+            let guid = [u.substr(0, 8), u.substr(8, 4), '4000-8' + u.substr(13, 3), u.substr(16, 12)].join('_');
+
+            // container element
+            jQuery('<div/>', {
+                "id": guid,
+                "class": 'js_chart_container',
+                "css": {
+                    "width": "200px",
+                    "padding": "8px",
+                    "border": "1px solid #ccc",
+                    "box-shadow": "0 2px 8px 0 #ccc, 0 2px 6px 0 #ccc"
+                }
+            }).appendTo('#js_chart');
+
+            // first row element
+            jQuery('<div/>', {
+                "id": "firstRow",
+                "class": 'row-container',
+                "css": {
+
+                },
+            }).appendTo('#' + guid);
+
+            // name and val 
+            jQuery('<div/>', {
+                "id": "nameVal",
+                "class": 'name-val',
+                "css": {
+                    "align-items": "center",
+                    "display": "flex"
+                },
+            }).appendTo('#firstRow');
+
+            // name
+            jQuery('<div/>', {
+                "class": 'name',
+                "css": {
+                    "font-size": labelFz,
+                    "color": labelFc
+                },
+                "text": firstLabel
+            }).appendTo('#nameVal');
+
+            // val
+            jQuery('<div/>', {
+                "class": 'val',
+                "css": {
+                    "margin-left": "auto",
+                    "font-weight": "bold",
+                    "font-size": valFz,
+                    "color": labelFc
+                },
+                "text": firstValPre + firstVal + firstValPost
+            }).appendTo('#nameVal');
+
+
+            // background bar one
+            jQuery('<div/>', {
+                "id": "backgroundBarFirst",
+                "class": 'bar-background' ,
+                "css": {
+                    "height": barHeight,
+                    "width": '90%',
+                    "background-color": "#ccc",
+                    "position": "relative",
+                    "margin-top": "2px",
+                    "display" : !showFirstBar ? ' none' : 'auto'
+                },
+            }).appendTo('#firstRow');
+
+            // indicator bar one
+            jQuery('<div/>', {
+                "id": "indicatorBarFirst",
+                "class": 'bar-background',
+                "css": {
+                    "height": barHeight,
+                    "width": (firstVal * 100) / baseVal + '%',
+                    "background-color": "#72c3f3",
+                    "position": "absolute",
+                    "top": "0px"
+                },
+            }).appendTo('#backgroundBarFirst');
+
+
+            // second row starts here
+            // first row element
+            jQuery('<div/>', {
+                "id": "secondRow",
+                "class": 'row-container',
+                "css": {
+
+                },
+            }).appendTo('#' + guid);
+
+            // name and val 
+            jQuery('<div/>', {
+                "id": "nameVal2",
+                "class": 'name-val',
+                "css": {
+                    "align-items": "center",
+                    "display": "flex",
+                    "margin-top": "4px"
+                },
+            }).appendTo('#secondRow');
+
+            // name
+            jQuery('<div/>', {
+                "class": 'name',
+                "css": {
+                    "font-size": labelFz,
+                    "color": labelFc
+                },
+                "text": secondLabel
+            }).appendTo('#nameVal2');
+
+            // val
+            jQuery('<div/>', {
+                "class": 'val',
+                "css": {
+                    "margin-left": "auto",
+                    "font-weight": "bold",
+                    "font-size": valFz,
+                    "color": labelFc
+                },
+                "text": secondValPre + secondVal + secondValPost
+            }).appendTo('#nameVal2');
+
+
+            // background bar two
+            jQuery('<div/>', {
+                "id": "backgroundBarSecond",
+                "class": 'bar-background',
+                "css": {
+                    "height": barHeight,
+                    "width": '90%',
+                    "background-color": "#ccc",
+                    "position": "relative",
+                    "margin-top": "2px",
+                    "display" : !showSecondBar ? ' none' : 'auto'
+                },
+            }).appendTo('#secondRow');
+
+            // indicator bar two
+            jQuery('<div/>', {
+                "id": "indicatorBarSecond",
+                "class": 'bar-background',
+                "css": {
+                    "height": barHeight,
+                    "width": (secondVal * 100) / baseVal + '%',
+                    "background-color": "#72c3f3",
+                    "position": "absolute",
+                    "top": "0px"
+                },
+            }).appendTo('#backgroundBarSecond');
+
+            // third row starts here
+            // first row element
+            jQuery('<div/>', {
+                "id": "thirdRow",
+                "class": 'row-container',
+                "css": {
+
+                },
+            }).appendTo('#' + guid);
+
+            // third row element
+            jQuery('<div/>', {
+                "id": "nameVal3",
+                "class": 'row-container',
+                "css": {
+                    "display": "flex",
+                    "margin-top": "8px",
+                    "align-items": "center"
+                },
+            }).appendTo('#thirdRow');
+
+            jQuery('<div/>', {
+                "id": "thirdRowText",
+                "class": 'row-container',
+                "css": {
+                    "font-size": labelFz,
+                    "color": labelFc
+                },
+                "html": thirdLabel
+            }).appendTo('#nameVal3');
+
+            jQuery('<div/>', {
+                "id": "thirdRowVal",
+                "class": 'row-container',
+                "css": {
+                    "margin-left": "auto",
+                    "font-size": thirdValFz,
+                    "color": labelFc,
+                    "background-color": thirdVal >= 100 ? '#84d9a3' : thirdVal > 90 && thirdVal < 100 ? '#f7dc6f' : '#f58d8d',
+                    "padding": "0px 15px",
+                    "border-radius": "15px",
+                    "height": "20px",
+                    "align-items": "center",
+                    "display": "flex"
+                },
+                "html": thirdVal + '%'
+            }).appendTo('#nameVal3');
+
+         // background bar three
+         jQuery('<div/>', {
+                "id": "backgroundBarThird",
+                "class": 'bar-background',
+                "css": {
+                    "height": barHeight,
+                    "width": '90%',
+                    "background-color": "#ccc",
+                    "position": "relative",
+                    "margin-top": "4px",
+                    "display" : !showThirdBar ? ' none' : 'auto'
+                },
+            }).appendTo('#thirdRow');
+
+            // indicator bar three
+            jQuery('<div/>', {
+                "id": "indicatorBarThird",
+                "class": 'bar-background',
+                "css": {
+                    "height": barHeight,
+                    "width": thirdVal + '%',
+                    "background-color": "#72c3f3",
+                    "position": "absolute",
+                    "top": "0px"
+                },
+            }).appendTo('#backgroundBarThird');
+        }
+
+        function calculateBase(f, s) {
+            var b;
+            var maxVal = Math.max(Math.ceil(f), Math.ceil(s));
+            var noOfDigitsInMax = maxVal.toString().length;
+            if (maxVal < 10) {
+                b = 10;
+            } else if (maxVal < 50) {
+                b = 50;
+            } else if (maxVal < 100) {
+                b = 100;
+            } else if (maxVal < 250) {
+                b = 250;
+            } else if (maxVal < 500) {
+                b = 500;
+            } else {
+                var scal = 500
+                while (!b) {
+                    scal = scal + 500;
+                    if (maxVal < scal) {
+                        b = scal;
+                    }
+                }
+            }
+            return b;
+        }
+
+        drawCard({ thirdLabel: '%Actual to budget', 
+                   thirdVal: '100', 
+                   firstValPre: '$',
+                   secondVal: '220', 
+                   secondLabel: 'Budget Revenue', 
+                   firstVal: '59', 
+                   firstLabel: 'Actual Revenue' ,
+                   showFirstBar: true,
+                   showSecondBar: true,
+                   showThirdBar: true
+                });
+    </script>
+</body>
+
+</html>
