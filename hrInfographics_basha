@@ -1,0 +1,102 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+	    
+            .hrifographics-container {
+                display: flex;
+                width: 100%;
+                align-items: center;
+		margin-top:6%;
+		font-size:16px;
+		font-weight:bold;
+            }
+            .hrifographics-title {
+                width: 85px;
+                margin-right: 16px;
+				background:#fff !important;
+            }
+            .hrifographics-title, .hrifographics-val {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 14px 15px;
+                background:linear-gradient(to right, #78CFCF, #7BD3D3);
+            }
+            .hrifographics-val {
+                flex-grow: 1;
+            }
+			
+			.CDCS-title-color{
+				color:#72C3F3;
+			}
+		
+			.CTTS-title-color{
+					color:#98C7DC;
+					}
+			.CROP-title-color{
+					color:#CDC2EC;
+					}
+			.ED-title-color{
+					color:#DDE8B7;
+					}
+			.GCO-title-color{
+					color:#AEF4B9;
+					}	
+			
+        </style>
+</head>
+
+<body>
+<!-- CDCS Section -->
+
+
+    <div class="hrifographics-container">
+        <div class="hrifographics-title CDCS-title-color">
+            CDCS
+        </div>
+        <div class="hrifographics-val">
+            444
+        </div>
+    </div>
+<!-- CTTS Section -->
+    <div class="hrifographics-container">
+        <div class="hrifographics-title CTTS-title-color">
+            CTTS
+        </div>
+        <div class="hrifographics-val">
+            666
+        </div>
+    </div>
+<!-- CORP Section -->
+    <div class="hrifographics-container">
+        <div class="hrifographics-title CROP-title-color">
+            CORP
+        </div>
+        <div class="hrifographics-val">
+            000
+        </div>
+    </div>
+
+<!-- Early Dev Section -->
+    <div class="hrifographics-container">
+        <div class="hrifographics-title ED-title-color">
+            Early Dev
+        </div>
+        <div class="hrifographics-val">
+            888
+        </div>
+    </div>
+
+<!-- GCO Section -->
+    <div class="hrifographics-container">
+        <div class="hrifographics-title GCO-title-color">
+            GCO
+        </div>
+        <div class="hrifographics-val">
+            999
+        </div>
+    </div>
+</body>
+
+</html>
