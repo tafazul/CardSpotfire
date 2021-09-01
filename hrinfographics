@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+            .hrifographics-container {
+                display: flex;
+                width: 200px;
+                align-items: center;
+            }
+            .hrifographics-title {
+                width: 40px;
+                margin-right: 16px;
+            }
+            .hrifographics-title, .hrifographics-val {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 4px 15px;
+                background:linear-gradient(to right, #90B2D8, #C1E3FF);;
+            }
+            .hrifographics-val {
+                flex-grow: 1;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="hrifographics-container">
+        <div class="hrifographics-title">
+            CDCS
+        </div>
+        <div class="hrifographics-val">
+            4523
+        </div>
+    </div>
+</body>
+
+</html>
