@@ -2,61 +2,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
         <style>
+.sfc-style-root .sf-element-scroll-bar {
+
+display:none !important;
+}
 	    
             .hrifographics-container {
                 display: flex;
                 width: 100%;
                 align-items: center;
-		margin-top:6%;
-		font-size:16px;
+		margin-top:9%;
+		
+		font-size:20px;
 		font-weight:bold;
             }
             .hrifographics-title {
-                width: 85px;
-                margin-right: 16px;
-				background:#fff !important;
+                width: 100px;
+                margin-right: -12px;
+		background:#fff !important;
+		//border:1px solid #ccc;
             }
+	    
+	    
             .hrifographics-title, .hrifographics-val {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                padding: 14px 15px;
+                padding: 18px 15px;
                 background:linear-gradient(to right, #78CFCF, #7BD3D3);
             }
             .hrifographics-val {
                 flex-grow: 1;
+		margin-right:10%;
+		border-radius: 6px;
             }
+
+	.CDCS-title-color{
+			color:#6C2FAC;
+			font-weight: bold;
+			margin-top:1%;
 			
-			.CDCS-title-color{
-				color:#72C3F3;
 			}
-		
-			.CTTS-title-color{
-					color:#98C7DC;
-					}
-			.CROP-title-color{
-					color:#CDC2EC;
-					}
-			.ED-title-color{
-					color:#DDE8B7;
-					}
-			.GCO-title-color{
-					color:#AEF4B9;
-					}	
+	
 			
+	.CTTS-title-color{
+			color:#6C2FAC;
+			font-weight: bold;
+			}
+	.CROP-title-color{
+			color:#CDC2EC;
+			font-weight: bold;
+			}
+	.ED-title-color{
+			color:#DDE8B7;
+			font-weight: bold;
+			}
+	.GCO-title-color{
+			color:#AEF4B9;
+			font-weight: bold;
+			}
+	.Title-font{
+		font-size:14px;
+		}
+
+		.colum-Flex{
+			flex-direction:column;
+			height: 80px;
+			border-radius: 6px;
+						
+			margin-top:-8%;
+			
+			margin-right:10%;
+		}
+			.main-section{
+				margin-bottom:15px;
+			}	
         </style>
 </head>
 
 <body>
+
+<!-- Main Section -->
+
+	
+    <div class="hrifographics-container">
+        
+        <div class="hrifographics-val colum-Flex">
+			<div class="main-section">
+			<SpotfireControl id="ac0b2cd7ceca4f02a5cebb9dc981147e" />
+			</div>
+			<div>
+				4444
+			</div>
+        </div>
+    </div>
+
 <!-- CDCS Section -->
-
-
     <div class="hrifographics-container">
         <div class="hrifographics-title CDCS-title-color">
             CDCS
         </div>
         <div class="hrifographics-val">
-            444
+            55
         </div>
     </div>
 <!-- CTTS Section -->
@@ -65,7 +112,7 @@
             CTTS
         </div>
         <div class="hrifographics-val">
-            666
+            66
         </div>
     </div>
 <!-- CORP Section -->
@@ -74,7 +121,7 @@
             CORP
         </div>
         <div class="hrifographics-val">
-            000
+            66
         </div>
     </div>
 
@@ -84,7 +131,7 @@
             Early Dev
         </div>
         <div class="hrifographics-val">
-            888
+            77
         </div>
     </div>
 
@@ -94,7 +141,7 @@
             GCO
         </div>
         <div class="hrifographics-val">
-            999
+            88
         </div>
     </div>
 </body>
