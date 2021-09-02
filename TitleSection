@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #hrPplInfoDashboard.title-container {
+            background: blue;
+            display: flex;
+            padding: 0px 10px;
+            align-items: center;
+            color: #fff;
+        }
+
+        #hrPplInfoDashboard .date {
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: 8px;
+        }
+
+        #hrPplInfoDashboard .title-text {
+            margin-right: auto;
+        }
+
+        #hrPplInfoDashboard .logo {
+            display: flex;
+            margin: 8px 0px;
+        }
+        #hrPplInfoDashboard img {
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hrPplInfoDashboard" class="title-container">
+        <div class="date">
+            Jul'21
+        </div>
+        <div class="title-text">
+            India HR People Infohraphics Dashboard
+        </div>
+        <div class="logo">
+            <img src="Picture1.png" />
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>
