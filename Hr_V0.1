@@ -1,0 +1,640 @@
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* hamburger styles start */
+        #hamburger {
+            width: 18px;
+            height: 12px;
+            position: relative;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        #hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #fff;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        #hamburger span:nth-child(1) {
+            top: 0px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(2) {
+            top: 5px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(3) {
+            top: 10px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger.open span:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: -3px;
+            left: 0px;
+        }
+
+        #hamburger.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        #hamburger.open span:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 10px;
+            left: 0px;
+        }
+
+        /* hamburger styles end */
+
+        /* header styles start */
+        header {
+            background-color: #7d61dc;
+            padding: 8px 12px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            right: 0px;
+            left: 0px;
+            top: 34px;
+	    height:18px;
+        }
+
+        .filter-icon-container {
+            width: 18px;
+            margin-left: auto;
+            cursor: pointer;
+            display: flex;
+        }
+
+        .logo-container {
+            margin-left: 32px;
+        }
+
+        .page-title-container {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* header styles end */
+        main {
+            margin-top: 24px;
+            display: flex;
+        }
+
+        #page-content {
+            flex-grow: 1;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        .content-col:not(:last-child) {
+            border-right: 1px solid #ccc;
+        }
+
+
+        /* menu styles start */
+        .menu-container ul{
+            margin: 0px;
+            width: 100%;
+            padding: 8px 16px ;
+        }
+
+        .menu-container ul li {
+            list-style-type: none;
+            white-space: nowrap;
+            overflow: hidden ;
+        }
+
+        .menu-container.open {
+            width: 200px;
+        }
+        .menu-container.open ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 101px);
+            border-right: 1px solid #dcdcdc;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .menu-name {
+            display: none;
+            margin-left: 8px;
+        }
+
+        .menu-name.open {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        /* menu styles end */
+
+        /* filter styles start */
+        .filters-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 101px);
+            border-left: 1px solid #dcdcdc;
+        }
+        .filter-name {
+            display: none;
+        }
+        .filter-name.open {
+            display: inline;
+            position: absolute;
+            right: 50px;
+            top: 3px;
+        }
+        .filter-name, .filter-icon {
+            text-align: right;
+        }
+        .filter-icon {
+            display: inline-block;
+            width: 20px;
+            position: absolute;
+            right: 20px;
+        }
+        .filters-container ul {
+            margin: 0px;
+            padding: 0px;
+            padding-top: 8px;
+        }
+        .filters-container ul li {
+            list-style-type: none;
+            position: relative;
+        }
+
+        .filters-container.open {
+            width: 200px;
+        }
+
+        /* filter styles end */
+
+
+        /* page content styles start */
+        #page-content {
+            display: flex;
+        }
+        #page-content .content-col {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            flex-basis: 0;
+            padding-top: 12px;
+        }
+        /* page content styles end */
+
+        /* card head styles start*/
+        .card-wrapper {
+            display: inline-block;
+            text-align: center;
+        }
+        .total-head-count-card {
+            
+        }
+        .card-head {
+            color: #fff;
+            background-color: #50d2b9;
+            padding: 4px 18px;
+            text-align: center;
+            margin: 0px 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .head-text {
+
+        } 
+        .card-body {
+            box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+            padding: 32px 12px 10px 12px;
+            position: relative;
+            top: -27px;
+        }
+        .val-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 4px 0px;
+        }
+        .val-row:last-child {
+            border-bottom: 0px;
+        }
+        .head-value {
+            font-size: 24px;
+            position: relative;
+        }
+        .head-value .icon {
+            position: absolute;
+            right: -16px;
+        }
+        .head-value .icon svg {
+            height: 25px;
+            width: 25px;
+            fill: #fff;
+        }
+        .val {
+            display: flex;
+        }
+        .val-arrow {
+            display: flex;
+        }
+        .val-arrow svg {
+            height: 16px;
+            width: 16px;
+            fill: rgb(150, 150, 5);
+        }
+        .val-arrow.down svg {
+            transform: rotate(180deg);
+            fill: saddlebrown;
+        }
+        /* card head styles end*/
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="hamburger-container">
+                <div id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="logo-container">
+                logo goes here
+            </div>
+            <div class="page-title-container">
+                HR People Infographics Dashboard - Jul 2021
+            </div>
+            <div class="filter-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1"
+                    style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve">
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.6724;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st1 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st2 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+                    </style>
+                    <g>
+                        <g>
+                            <g>
+                                <path
+                                    d="M22.2,1.5l-8.5,11.2c-0.2,0.3-0.3,0.6-0.3,0.9v7.8l-2.7,0.8v-8.6c0-0.3-0.1-0.6-0.3-0.9L1.8,1.5H22.2 M22.8,0H1.2     c-1,0-1.5,1.1-0.9,1.9l8.9,11.8v9.6c0,0.4,0.3,0.7,0.7,0.7c0.1,0,0.1,0,0.2,0l4.3-1.3c0.3-0.1,0.5-0.4,0.5-0.7v-8.3l8.9-11.8     C24.3,1.1,23.8,0,22.8,0L22.8,0z"
+                                    fill="#fff" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </header>
+        <main>
+            <div id="menu-container" class="menu-container">
+                <ul>
+                    <li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <title />
+                                <g data-name="Layer 11" id="Layer_11">
+                                    <path
+                                        d="M30.71,15.29l-14-14a1,1,0,0,0-1.42,0l-14,14a1,1,0,0,0-.21,1.09A1,1,0,0,0,2,17H5V30a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V24h2v6a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V17h3a1,1,0,0,0,.92-.62A1,1,0,0,0,30.71,15.29Z" />
+                                </g>
+                            </svg>
+                        </span>
+                        <span class="menu-name">Home</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="page-content">
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head">
+                            <div class="head-text">Total head count</div>
+                            <div class="head-value">
+                                <span>58458</span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head">
+                            <div class="head-text">Total head count</div>
+                            <div class="head-value">
+                                <span>58458</span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head">
+                            <div class="head-text">Total head count</div>
+                            <div class="head-value">
+                                <span>58458</span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head">
+                            <div class="head-text">Total head count</div>
+                            <div class="head-value">
+                                <span>58458</span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span>5856</span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="filters-container" class="filters-container">
+                <ul>
+                    <li>
+                        <span class="filter-name">Home</span>
+                        <span class="filter-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <title />
+                                <g data-name="Layer 11" id="Layer_11">
+                                    <path
+                                        d="M30.71,15.29l-14-14a1,1,0,0,0-1.42,0l-14,14a1,1,0,0,0-.21,1.09A1,1,0,0,0,2,17H5V30a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V24h2v6a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V17h3a1,1,0,0,0,.92-.62A1,1,0,0,0,30.71,15.29Z" />
+                                </g>
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#hamburger').click(function () {
+                $(this).toggleClass('open');
+                $("#menu-container").toggleClass('open');
+                $('#menu-container .menu-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+            $('.filter-icon-container').click(function () {
+                $("#filters-container").toggleClass('open');
+                $('#filters-container .filter-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+        });
+    </script>
+</body>
+
