@@ -92,7 +92,7 @@
         /* header styles start */
         header {
             background-color: #7d61dc;
-            padding: 8px 12px;
+            padding: 8px 24px;
             color: #fff;
             display: flex;
             align-items: center;
@@ -100,7 +100,8 @@
             right: 0px;
             left: 0px;
             top: 34px;
-	    height:18px;
+	    height:38px;
+	    font-family: "Times New Roman", Times, serif;
         }
 
         .filter-icon-container {
@@ -117,11 +118,12 @@
         .page-title-container {
             flex-grow: 1;
             text-align: center;
+	    font-size:28px;
         }
 
         /* header styles end */
         main {
-            margin-top: 24px;
+            margin-top: 44px;
             display: flex;
         }
 
@@ -160,13 +162,13 @@
         .menu-container {
             width: 64px;
             transition: width .5s ease-in-out;
-            min-height: calc(100vh - 101px);
+            min-height: calc(100vh - 130px);
             border-right: 1px solid #dcdcdc;
         }
 
         .menu-icon {
             display: inline-block;
-            width: 20px;
+            width: 25px;
             flex-shrink: 0;
         }
 
@@ -186,7 +188,7 @@
         .filters-container {
             width: 64px;
             transition: width .5s ease-in-out;
-            min-height: calc(100vh - 101px);
+            min-height: calc(100vh - 130px);
             border-left: 1px solid #dcdcdc;
         }
         .filter-name {
@@ -247,22 +249,27 @@
         }
         .card-head {
             color: #fff;
-            background-color: #50d2b9;
-            padding: 4px 18px;
+            background:linear-gradient(to top, #67E4E4, #52CBBE);
+            padding: 4px 150px;
             text-align: center;
-            margin: 0px 10px;
+            margin: 0px 4px;
             position: relative;
             z-index: 1;
+	    border-radius: 3px;
         }
         .head-text {
+		font-size:15px;
+		font-weight:bold;
 
         } 
         .card-body {
-            box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
-            padding: 32px 12px 10px 12px;
-            position: relative;
-            top: -27px;
-        }
+		box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+		padding: 54px 44px 16px 38px;
+		position: relative;
+		top: -27px;
+		background-color: #fff;
+		border-radius: 3px;
+}
         .val-row {
             display: flex;
             justify-content: space-between;
@@ -315,14 +322,13 @@
                 </div>
             </div>
             <div class="logo-container">
-                logo goes here
+                <img src="90aceb9377ed450da91cdc1e1d743003.png" style="border: 0; width: 150px; height: 44px;"/>
             </div>
             <div class="page-title-container">
                 HR People Infographics Dashboard - Jul 2021
             </div>
             <div class="filter-icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1"
-                    style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
                     <style type="text/css">
                         .st0 {
                             fill: none;
@@ -367,13 +373,7 @@
                 <ul>
                     <li>
                         <span class="menu-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                                <title />
-                                <g data-name="Layer 11" id="Layer_11">
-                                    <path
-                                        d="M30.71,15.29l-14-14a1,1,0,0,0-1.42,0l-14,14a1,1,0,0,0-.21,1.09A1,1,0,0,0,2,17H5V30a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V24h2v6a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V17h3a1,1,0,0,0,.92-.62A1,1,0,0,0,30.71,15.29Z" />
-                                </g>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" id="Layer_2" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#101820;}</style></defs><title/><path class="cls-1" d="M30,15a1,1,0,0,1-.58-.19L16,5.23,2.58,14.81a1,1,0,0,1-1.16-1.62l14-10a1,1,0,0,1,1.16,0l14,10A1,1,0,0,1,30,15Z"/><path class="cls-1" d="M5,9A1,1,0,0,1,4,8V4A1,1,0,0,1,5,3H9A1,1,0,0,1,9,5H6V8A1,1,0,0,1,5,9Z"/><path class="cls-1" d="M25,29H20a1,1,0,0,1-1-1V21H13v7a1,1,0,0,1-1,1H7a3,3,0,0,1-3-3V16a1,1,0,0,1,2,0V26a1,1,0,0,0,1,1h4V20a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1v7h4a1,1,0,0,0,1-1V16a1,1,0,0,1,2,0V26A3,3,0,0,1,25,29Z"/></svg>
                         </span>
                         <span class="menu-name">Home</span>
                     </li>
@@ -383,7 +383,7 @@
                 <div class="content-col">
                     <div class="card-wrapper total-head-count-card">
                         <div class="card-head">
-                            <div class="head-text">Total head count</div>
+                            <div class="head-text">Total Headcount</div>
                             <div class="head-value">
                                 <span>58458</span>
                                 <span class="icon">
@@ -438,7 +438,7 @@
                 <div class="content-col">
                     <div class="card-wrapper total-head-count-card">
                         <div class="card-head">
-                            <div class="head-text">Total head count</div>
+                            <div class="head-text">New Hires Onboarded</div>
                             <div class="head-value">
                                 <span>58458</span>
                                 <span class="icon">
@@ -493,7 +493,7 @@
                 <div class="content-col">
                     <div class="card-wrapper total-head-count-card">
                         <div class="card-head">
-                            <div class="head-text">Total head count</div>
+                            <div class="head-text">Total Open Positions</div>
                             <div class="head-value">
                                 <span>58458</span>
                                 <span class="icon">
@@ -548,7 +548,7 @@
                 <div class="content-col">
                     <div class="card-wrapper total-head-count-card">
                         <div class="card-head">
-                            <div class="head-text">Total head count</div>
+                            <div class="head-text">Annualized Attrition</div>
                             <div class="head-value">
                                 <span>58458</span>
                                 <span class="icon">
