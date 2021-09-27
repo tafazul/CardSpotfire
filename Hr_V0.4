@@ -378,10 +378,23 @@ background:linear-gradient(to top, #4CA6EA, #2EA4FD);
     margin-top: -30px;
 }
 .pyramid-bar {
-    width: 10px;
+    width: 200px;
     background-color: blue; ;
     margin-bottom: 2px;
+}
+.pyramid-bar-wrapper {
+    display: flex;
     width: 100%;
+    justify-content: center;
+}
+.pyramid-bar-wrapper .left-val, .pyramid-bar-wrapper .right-val {
+    width: 50px;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
 }
 .pyramid-values-wrapper {
     display: flex;
@@ -543,11 +556,31 @@ background:linear-gradient(to top, #4CA6EA, #2EA4FD);
                                 Headcount Pyramid
                             </div>
                             <div class="pyramid-values-wrapper">
-                                <div class="pyramid-bar">&nbsp;</div>
-                                <div class="pyramid-bar">&nbsp;</div>
-                                <div class="pyramid-bar">&nbsp;</div>
-                                <div class="pyramid-bar">&nbsp;</div>
-                                <div class="pyramid-bar">&nbsp;</div>
+                                <div class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right">34</div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right">34</div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right">34</div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right">34</div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right">34</div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
                             </div>
                         </div>
                     </div>
