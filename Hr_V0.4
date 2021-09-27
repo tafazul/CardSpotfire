@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
         html,
         body {
@@ -235,9 +242,11 @@
         #page-content .content-col {
             flex-grow: 1;
             display: flex;
-            justify-content: center;
+            justify-content: start;
             flex-basis: 0;
             padding-top: 12px;
+            flex-direction: column;
+            align-items: center;
         }
         /* page content styles end */
 
@@ -262,11 +271,11 @@
 	    width:85%;
 	    margin-left:auto;
 	    margin-right:auto;
-	    //height:5%;
+
         }
         .head-text {
 		font-size:18px;
-		//font-weight:bold;
+
 
         } 
         .card-body {
@@ -313,7 +322,7 @@
         .val {
             display: flex;
 	    font-size:14px;
-	    //color:#ccc;
+
 	    font-weight:bold;
         }
         .val-arrow {
@@ -357,6 +366,41 @@ background:linear-gradient(to top, #4CA6EA, #2EA4FD);
 }
 
 /*Colors end here*/
+
+
+/* pyramid styles start */
+.head-count-pyramid {
+    width: 100%;
+    text-align: center;
+}
+.pyramid-wrapper {
+    margin: 8px;
+    margin-top: -30px;
+}
+.pyramid-bar {
+    width: 10px;
+    background-color: blue; ;
+    margin-bottom: 2px;
+    width: 100%;
+}
+.pyramid-values-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 19px 0px rgb(55 50 50 / 91%);
+    padding: 28px 25px 16px 25px;
+}
+.pyramid-heading {
+    padding: 8px 20px;
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+}
+/* pyramid styles end */
     </style>
 </head>
 
@@ -490,6 +534,20 @@ background:linear-gradient(to top, #4CA6EA, #2EA4FD);
                                     </span>
                                 </span>
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="head-count-pyramid">
+                        <div class="pyramid-wrapper">
+                            <div class="pyramid-heading">
+                                Headcount Pyramid
+                            </div>
+                            <div class="pyramid-values-wrapper">
+                                <div class="pyramid-bar">&nbsp;</div>
+                                <div class="pyramid-bar">&nbsp;</div>
+                                <div class="pyramid-bar">&nbsp;</div>
+                                <div class="pyramid-bar">&nbsp;</div>
+                                <div class="pyramid-bar">&nbsp;</div>
                             </div>
                         </div>
                     </div>
@@ -726,4 +784,4 @@ background:linear-gradient(to top, #4CA6EA, #2EA4FD);
         });
     </script>
 </body>
-
+</html>
