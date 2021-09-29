@@ -1,0 +1,998 @@
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* hamburger styles start */
+        #hamburger {
+            width: 18px;
+            height: 12px;
+            position: relative;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        #hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #fff;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        #hamburger span:nth-child(1) {
+            top: 0px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(2) {
+            top: 5px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(3) {
+            top: 10px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger.open span:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: -3px;
+            left: 0px;
+        }
+
+        #hamburger.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        #hamburger.open span:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 10px;
+            left: 0px;
+        }
+
+        /* hamburger styles end */
+
+        /* header styles start */
+        header {
+            
+	    background:linear-gradient(to bottom, #A263E5, #6B2FAB);
+            padding: 8px 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            right: 0px;
+            left: 0px;
+            top: 34px;
+	    height:38px;
+	    font-family: "Times New Roman", Times, serif;
+        }
+
+        .filter-icon-container {
+            width: 18px;
+            margin-left: auto;
+            cursor: pointer;
+            display: flex;
+        }
+
+        .logo-container {
+            margin-left: 32px;
+        }
+
+        .page-title-container {
+            flex-grow: 1;
+            text-align: center;
+	    font-size:28px;
+	    font-weight:bold;
+        }
+
+        /* header styles end */
+        main {
+            margin-top: 44px;
+            display: flex;
+        }
+
+        #page-content {
+            flex-grow: 1;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        .content-col:not(:last-child) {
+            border-right: 1px solid #ccc;
+        }
+
+
+        /* menu styles start */
+        .menu-container ul{
+            margin: 0px;
+            width: 100%;
+            padding: 8px 16px ;
+        }
+
+        .menu-container ul li {
+            list-style-type: none;
+            white-space: nowrap;
+            overflow: hidden ;
+        }
+
+        .menu-container.open {
+            width: 200px;
+        }
+        .menu-container.open ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 130px);
+            border-right: 1px solid #dcdcdc;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            width: 25px;
+            flex-shrink: 0;
+        }
+
+        .menu-name {
+            display: none;
+            margin-left: 8px;
+        }
+
+        .menu-name.open {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        /* menu styles end */
+
+        /* filter styles start */
+        .filters-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 130px);
+            border-left: 1px solid #dcdcdc;
+        }
+        .filter-name {
+            display: none;
+        }
+        .filter-name.open {
+            display: inline;
+            position: absolute;
+            right: 50px;
+            top: 3px;
+        }
+        .filter-name, .filter-icon {
+            text-align: right;
+        }
+        .filter-icon {
+            display: inline-block;
+            width: 20px;
+            position: absolute;
+            right: 20px;
+        }
+        .filters-container ul {
+            margin: 0px;
+            padding: 0px;
+            padding-top: 8px;
+        }
+        .filters-container ul li {
+            list-style-type: none;
+            position: relative;
+        }
+
+        .filters-container.open {
+            width: 200px;
+        }
+
+        /* filter styles end */
+
+
+        /* page content styles start */
+        #page-content {
+            display: flex;
+        }
+        #page-content .content-col {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            justify-content: start;
+            flex-basis: 0;
+            padding-top: 12px;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* page content styles end */
+
+        /* card head styles start*/
+        .card-wrapper {
+            display: inline-block;
+            text-align: center;
+	    width:70%;
+        }
+        .total-head-count-card {
+            
+        }
+        .card-head {
+            color: #fff;
+	    font-weight:bold;
+            padding: 1px 8px;
+            text-align: center;
+            margin: -4	px 8px;
+            position: relative;
+            z-index: 1;
+	    border-radius: 2px;
+	    width:85%;
+	    margin-left:auto;
+	    margin-right:auto;
+	    //height:5%;
+        }
+        .head-text {
+		font-size:18px;
+		//font-weight:bold;
+
+        } 
+        .card-body {
+		box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+		padding: 34px 48px 2px 44px;
+		position: relative;
+		top: -30px;
+		background-color: #fff;
+		border-radius: 8px;
+		    box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+}
+
+	.val-text{
+		font-size:15px;
+		font-weight:bold;
+		color:#4F4F4F;
+	}
+        .val-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 6px 0px;
+        }
+        .val-row:last-child {
+            border-bottom: 0px;
+        }
+        .head-value {
+            font-size: 24px;
+            position: relative;
+	    
+        }
+        .head-value .icon {
+            position: absolute;
+            right: -1px;
+            
+        }
+        .head-value .icon svg {
+            height: 25px;
+            width: 25px;
+            fill: #fff;
+        }
+        .val {
+            display: flex;
+	    font-size:14px;
+	    //color:#ccc;
+	    font-weight:bold;
+        }
+        .val-arrow {
+            display: flex;
+        }
+        .val-arrow svg {
+            height: 16px;
+            width: 16px;
+            fill: rgb(150, 150, 5);
+        }
+        .val-arrow.down svg {
+            transform: rotate(180deg);
+            fill: saddlebrown;
+        }
+        /* card head styles end*/
+
+/*Colors starts here*/
+
+.totalHeadcountColor{
+
+background:linear-gradient(to top, #67E4E4, #52CBBE);
+
+}
+
+.newHiresOnboarded{
+
+background:linear-gradient(to top, #91A0A0, #5D7373);
+
+}
+
+.openPositions{
+
+background:linear-gradient(to top, #00A0A8, #167D82);
+
+}
+
+.annualizedAttrition{
+
+background:linear-gradient(to top, #4CA6EA, #2EA4FD);
+
+}
+
+/*Colors end here*/
+
+
+/* pyramid styles start */
+.head-count-pyramid {
+    width: 100%;
+    text-align: center;
+}
+.pyramid-wrapper {
+    margin: 18px;
+    margin-top: -30px;
+}
+.pyramid-bar {
+    width: 200px;
+    background-color: blue;
+    margin: 2px 8px;
+}
+
+.pyramid-bar-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+align-items: center;
+}
+.pyramid-bar-wrapper .left-val, .pyramid-bar-wrapper .right-val {
+    width: 50px;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.pyramid-values-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:#fff;
+       box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    padding: 28px 25px 16px 25px;
+    border-radius: 8px;
+    
+}
+.pyramid-heading {
+    padding: 8px 55px;
+    background: linear-gradient(to top, #458E8E, #00A0A0);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+/* pyramid styles end */
+
+/*new hires sum start*/
+.sum-new-hires-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+	margin: 0px 12px;
+    background:#fff;
+       box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    padding: 32px 25px 32px 25px;
+    border-radius: 8px;
+}
+.add-newhires, .bcfill-newhires, .total-newhires {
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+	background: black;
+	display: flex;
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+}
+.add-newhires-container, .bcfill-newhires-container, .total-newhires-container {
+	text-align: center;
+}
+
+.plusSign {
+    margin-bottom: 9px;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+.equalSign {
+    margin-bottom: 8px;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+/*new hires sum end*/ 
+
+/*background colors start*/
+
+.bgTitleGreen{
+
+background-color:rgb(82,203,190);
+
+}
+
+.bgTitlePerple{
+
+background-color:rgb(158,108,214);
+
+}
+
+.bgTitlelightblue{
+
+background-color:rgb(0,176,240);
+
+}
+
+
+/*background colors end*/
+
+
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="hamburger-container">
+                <div id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="logo-container">
+                <img src="90aceb9377ed450da91cdc1e1d743003.png" style="border: 0; width: 150px; height: 44px;"/>
+            </div>
+            <div class="page-title-container">
+                HR People Infographics Dashboard - <SpotfireControl id="e99d699590d24ec5a0aa96600cf38431" />
+            </div>
+            <div class="filter-icon-container">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.6724;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st1 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st2 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+                    </style>
+                    <g>
+                        <g>
+                            <g>
+                                <path
+                                    d="M22.2,1.5l-8.5,11.2c-0.2,0.3-0.3,0.6-0.3,0.9v7.8l-2.7,0.8v-8.6c0-0.3-0.1-0.6-0.3-0.9L1.8,1.5H22.2 M22.8,0H1.2     c-1,0-1.5,1.1-0.9,1.9l8.9,11.8v9.6c0,0.4,0.3,0.7,0.7,0.7c0.1,0,0.1,0,0.2,0l4.3-1.3c0.3-0.1,0.5-0.4,0.5-0.7v-8.3l8.9-11.8     C24.3,1.1,23.8,0,22.8,0L22.8,0z"
+                                    fill="#fff" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </header>
+        <main>
+            <div id="menu-container" class="menu-container">
+                <ul>
+                    <li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" id="Layer_2" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#101820;}</style></defs><title/><path class="cls-1" d="M30,15a1,1,0,0,1-.58-.19L16,5.23,2.58,14.81a1,1,0,0,1-1.16-1.62l14-10a1,1,0,0,1,1.16,0l14,10A1,1,0,0,1,30,15Z"/><path class="cls-1" d="M5,9A1,1,0,0,1,4,8V4A1,1,0,0,1,5,3H9A1,1,0,0,1,9,5H6V8A1,1,0,0,1,5,9Z"/><path class="cls-1" d="M25,29H20a1,1,0,0,1-1-1V21H13v7a1,1,0,0,1-1,1H7a3,3,0,0,1-3-3V16a1,1,0,0,1,2,0V26a1,1,0,0,0,1,1h4V20a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1v7h4a1,1,0,0,0,1-1V16a1,1,0,0,1,2,0V26A3,3,0,0,1,25,29Z"/></svg>
+                        </span>
+                        <span class="menu-name">Home</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="page-content">
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head totalHeadcountColor">
+                            <div class="head-text">Total Headcount</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="23d1547e86974c0c88c81d59f6c61021" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="0f2ef99948294986b8e6f180dc3ec4c0" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="41220175f38446b18c3907b60c7fe627" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="37d29f779d5241deb660419b08cfb0d9" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="af8d66c7c62c4125850123df7c3d43c7" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="347326fca1764153ba83d712ad5f14e7" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+ <div class="head-count-pyramid">
+                        <div class="pyramid-wrapper">
+                            <div class="pyramid-heading">
+                                Headcount Pyramid
+                            </div>
+                            <div class="pyramid-values-wrapper">
+                                <div id="grade116" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="ccf69d63cf324912a47a6213a9078739" /></div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div id="grade112" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="d9aa8c08dd7148eaa7e13940a7e68b98" /></div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div id="grade111" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="0cdf8bd88e4c4f7fbd5bd7c9b7f9cbaa" /></div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div id="grade108" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="2d95f0c334684469ae37ec130bbdb3e6" /></div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                                <div id="grade101" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="e7ec3c0017054778a7a5e505f58d4be4" /></div>
+                                    <div class="pyramid-bar">&nbsp;</div>
+                                    <div class="right-val text-left">55</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head newHiresOnboarded">
+                            <div class="head-text">New Hires Onboarded</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="12723fad09ef40788ef00b02bc2ce0d0" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="51dc2bffe17447079a19da105f2855c3" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="ab2179bf03e44c3c90a2f3c9acd70c98" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="f428768582444a448fb85d6c6adc3346" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="e6f80466044d486685047150a6863742" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="8ceccf3f16534a478a33f9685e9d8eb6" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+		<div class="sum-new-hires-wrapper">
+		<div class="add-newhires-container">
+			<div class="add-newhires bgTitleGreen">
+				<SpotfireControl id="b78556f34b694a15add469c456a0135c" />
+			</div>
+			<div>Addition</div>
+		</div>
+		<div class="plusSign">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 36 36;" version="1.1" height="20px" width="20px" viewBox="0 0 36 36" xml:space="preserve"><style type="text/css">
+	.st0{fill:#9a9a9a;stroke:#9a9a9a; stroke-width:3px}
+	
+</style><g id="Layer_1"/><g id="icons"><path fill="#9a9a9a" class="st0" d="M19.6,2h-3.2c-0.9,0-1.6,0.7-1.6,1.6v11.2H3.6c-0.9,0-1.6,0.7-1.6,1.6v3.2c0,0.9,0.7,1.6,1.6,1.6   h11.2v11.2c0,0.9,0.7,1.6,1.6,1.6h3.2c0.9,0,1.6-0.7,1.6-1.6V21.2h11.2c0.9,0,1.6-0.7,1.6-1.6v-3.2c0-0.9-0.7-1.6-1.6-1.6H21.2V3.6   C21.2,2.7,20.5,2,19.6,2z" id="add_1_"/></g></svg>
+               </div>
+		<div class="bcfill-newhires-container">
+			<div class="bcfill-newhires bgTitlePerple">
+				<SpotfireControl id="a283ded2c9ef48618c88756bc35a9b81" />
+			</div>
+			<div>Backfill</div>
+		</div>
+		<div class="equalSign">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64" height="20px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20px" xml:space="preserve"><path fill="#9a9a9a" d="M64,24.646c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V14.021c0-1.657,1.343-3,3-3h58c1.657,0,3,1.343,3,3V24.646z"/><path fill="#9a9a9a" d="M64,49.979c0,1.658-1.343,3-3,3H3c-1.657,0-3-1.342-3-3V39.354c0-1.656,1.343-3,3-3h58c1.657,0,3,1.344,3,3V49.979z"/></svg>
+		</div>
+		<div class="total-newhires-container">
+			<div class="total-newhires bgTitlelightblue">
+				<SpotfireControl id="cf922de6fe4f4bc4a26ed095f21a26c5" />
+			</div>
+			<div>Total</div>
+		</div>
+</div>
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head openPositions">
+                            <div class="head-text">Total Open Positions</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="cb7786a27b7d45269bf40b1bc0f0d4ed" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="df050e07caaf49b4868e429d9ef1869c" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="1dbf1df5fab742de91efbb60b373f18c" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="db1180abc304465b85100b34dfda5fd5" /></span>
+                                    <span class="val-arrow">
+                                       
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="645e670b146d4869ad328ee403dfedb6" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="09a92e4a0e52440ba5f4667f6d101437" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+<div class="sum-new-hires-wrapper">
+		<div class="add-newhires-container">
+			<div class="add-newhires bgTitleGreen">
+				78<SpotfireControl id="b78556f34b694a15add469c456a0135c" />
+			</div>
+			<div>Addition</div>
+		</div>
+		<div class="plusSign">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 36 36;" version="1.1" height="20px" width="20px" viewBox="0 0 36 36" xml:space="preserve"><style type="text/css">
+	.st0{fill:#9a9a9a;stroke:#9a9a9a; stroke-width:3px}
+	
+</style><g id="Layer_1"/><g id="icons"><path fill="#9a9a9a" class="st0" d="M19.6,2h-3.2c-0.9,0-1.6,0.7-1.6,1.6v11.2H3.6c-0.9,0-1.6,0.7-1.6,1.6v3.2c0,0.9,0.7,1.6,1.6,1.6   h11.2v11.2c0,0.9,0.7,1.6,1.6,1.6h3.2c0.9,0,1.6-0.7,1.6-1.6V21.2h11.2c0.9,0,1.6-0.7,1.6-1.6v-3.2c0-0.9-0.7-1.6-1.6-1.6H21.2V3.6   C21.2,2.7,20.5,2,19.6,2z" id="add_1_"/></g></svg>
+               </div>
+		<div class="bcfill-newhires-container">
+			<div class="bcfill-newhires bgTitlePerple">
+				<SpotfireControl id="a283ded2c9ef48618c88756bc35a9b81" />
+			</div>
+			<div>Backfill</div>
+		</div>
+		<div class="equalSign">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64" height="20px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20px" xml:space="preserve"><path fill="#9a9a9a" d="M64,24.646c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V14.021c0-1.657,1.343-3,3-3h58c1.657,0,3,1.343,3,3V24.646z"/><path fill="#9a9a9a" d="M64,49.979c0,1.658-1.343,3-3,3H3c-1.657,0-3-1.342-3-3V39.354c0-1.656,1.343-3,3-3h58c1.657,0,3,1.344,3,3V49.979z"/></svg>
+		</div>
+		<div class="total-newhires-container">
+			<div class="total-newhires bgTitlelightblue">
+				<SpotfireControl id="cf922de6fe4f4bc4a26ed095f21a26c5" />
+			</div>
+			<div>Total</div>
+		</div>
+</div>
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head annualizedAttrition">
+                            <div class="head-text">Annualized Attrition</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="92bde686b83b4ad19996d236a9ed65c1" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="30f5ae429c3e407db7347e8dd8506806" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="41a88d39cf4e4248aef4611c088e874e" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="d085ec73c0e645379ee8ac4ebf4cba82" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="2c4f6b992858424990734bdc41246bb8" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="e6c014bde6b64ec290ca87620d520594" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="filters-container" class="filters-container">
+                <ul>
+                    <li>
+                        <span class="filter-name">Home</span>
+                        <span class="filter-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <title />
+                                <g data-name="Layer 11" id="Layer_11">
+                                    <path
+                                        d="M30.71,15.29l-14-14a1,1,0,0,0-1.42,0l-14,14a1,1,0,0,0-.21,1.09A1,1,0,0,0,2,17H5V30a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V24h2v6a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V17h3a1,1,0,0,0,.92-.62A1,1,0,0,0,30.71,15.29Z" />
+                                </g>
+                            </svg>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#hamburger').hover(function () {
+                $(this).toggleClass('open');
+                $("#menu-container").toggleClass('open');
+                $('#menu-container .menu-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+            $('.filter-icon-container').click(function () {
+                $("#filters-container").toggleClass('open');
+                $('#filters-container .filter-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+        });
+    </script>
+
+	<script>
+// pyramid head count start
+		var grade101Val = '';
+		var grade108Val = '';
+		var grade111Val = '';
+		var grade112Val = '';
+		var grade116Val = '';
+
+	$("#grade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade101Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade108Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade111Val = parseInt($(this).text());
+		redrawPyramid();	    
+	     }
+	})
+	$("#grade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade112Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade116Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+
+	function redrawPyramid() {
+		if(!isNaN(grade101Val) && !isNaN(grade108Val) && !isNaN(grade111Val) && !isNaN(grade112Val) && !isNaN(grade116Val) && grade101Val && grade108Val && grade111Val && grade112Val && grade116Val
+
+) {
+	$("#grade101 .pyramid-bar").css("width", "100%");
+$("#grade108 .pyramid-bar").css("width", ((grade108Val/grade101Val) * 100) + '%');
+$("#grade111 .pyramid-bar").css("width", ((grade111Val/grade101Val) * 100) + '%');
+$("#grade112 .pyramid-bar").css("width", ((grade112Val/grade101Val) * 100) + '%');
+$("#grade116 .pyramid-bar").css("width", ((grade116Val/grade101Val) * 100) + '%');
+	
+		}
+
+	}
+// pyramid head count end
+</script>
+
+</body>
+
