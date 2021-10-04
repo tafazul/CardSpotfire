@@ -1350,7 +1350,7 @@ width: 100%;
 </div>
 </div>
 <div class="diversity-container flex40">
-<div id="femaleTenureVal" class="diversity-item">
+<div id="femaleNewhireVal" class="diversity-item">
     <div class="diversity-img-container">
         <div class="diversity-img-bg divercity-background-female">&nbsp;</div>
         <img src="25cd4480caa34fd88460a4e70e543fba.png" style="border: 0; width: 47px; height: 80px;"/>
@@ -1360,7 +1360,7 @@ width: 100%;
     </div>
 </div>
 
-<div id="maleTenureVal" class="diversity-item">
+<div id="maleNewhireVal" class="diversity-item">
     <div class="diversity-img-container">
         <div class="diversity-img-bg divercity-background-male">&nbsp;</div>
         <img src="b1d3f65509134525b8706d6a1d75b30b.png" style="border: 0; width: 47px; height: 80px;"/>
@@ -1896,7 +1896,7 @@ if(!isNaN(tenureDiversityMale) && !isNaN(tenureDiversityFemale)) {
 </script>
 
 <script>
-// diversity start
+// acceptance decline start
 var acceptance = 0;
 var decline = 0;
 $("#acceptance .tenureval").on('DOMSubtreeModified', function() {
@@ -1921,8 +1921,39 @@ if(!isNaN(acceptance) && !isNaN(decline)) {
 }
 
 
-// diversity end
+// acceptance decline end
 
 </script>
+
+
+<script>
+    // diversity start newhires
+    var tenureDiversityMale = 0;
+    var tenureDiversityFemale = 0;
+    $("#femaleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+        tenureDiversityFemale = parseInt($(this).text());
+        redrawTenureDiversity();
+        }
+    })
+    $("#maleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+        tenureDiversityMale = parseInt($(this).text());
+        redrawTenureDiversity();
+        }
+    })
+    
+    function redrawTenureDiversity() {
+    
+    if(!isNaN(tenureDiversityMale) && !isNaN(tenureDiversityFemale)) {
+        $("#femaleNewhireVal .diversity-img-bg").css("height", tenureDiversityFemale + '%');
+        $("#maleNewhireVal .diversity-img-bg").css("height",  tenureDiversityMale + '%');
+    }
+    }
+    
+    
+    // diversity end new hires
+    
+    </script>
 
 </body>
