@@ -1928,26 +1928,26 @@ if(!isNaN(acceptance) && !isNaN(decline)) {
 
 <script>
     // diversity start newhires
-    var tenureDiversityMale = 0;
-    var tenureDiversityFemale = 0;
+    var newHireDiversityMale = 0;
+    var newHireDiversityFemale = 0;
     $("#femaleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
         if (!isNaN(parseInt($(this).text()))) {
-        tenureDiversityFemale = parseInt($(this).text());
-        redrawTenureDiversity();
+            newHireDiversityFemale = parseInt($(this).text());
+        redrawNewHireDiversity();
         }
     })
     $("#maleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
         if (!isNaN(parseInt($(this).text()))) {
-        tenureDiversityMale = parseInt($(this).text());
-        redrawTenureDiversity();
+            newHireDiversityMale = parseInt($(this).text());
+            redrawNewHireDiversity();
         }
     })
     
-    function redrawTenureDiversity() {
+    function redrawNewHireDiversity() {
     
-    if(!isNaN(tenureDiversityMale) && !isNaN(tenureDiversityFemale)) {
-        $("#femaleNewhireVal .diversity-img-bg").css("height", tenureDiversityFemale + '%');
-        $("#maleNewhireVal .diversity-img-bg").css("height",  tenureDiversityMale + '%');
+    if(!isNaN(newHireDiversityMale) && !isNaN(newHireDiversityFemale)) {
+        $("#femaleNewhireVal .diversity-img-bg").css("height", newHireDiversityFemale + '%');
+        $("#maleNewhireVal .diversity-img-bg").css("height",  newHireDiversityMale + '%');
     }
     }
     
