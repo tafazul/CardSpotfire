@@ -1956,4 +1956,35 @@ if(!isNaN(acceptance) && !isNaN(decline)) {
     
     </script>
 
+
+<script>
+    // diversity start attrition
+    var attritionDiversityMale = 0;
+    var attritionDiversityFemale = 0;
+    $("#femaleAttrVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            attritionDiversityFemale = parseInt($(this).text());
+            redrawAttritionDiversity();
+        }
+    })
+    $("#maleAttrVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            attritionDiversityMale = parseInt($(this).text());
+            redrawAttritionDiversity();
+        }
+    })
+    
+    function redrawAttritionDiversity() {
+    
+    if(!isNaN(attritionDiversityMale) && !isNaN(attritionDiversityFemale)) {
+        $("#femaleAttrVal .diversity-img-bg").css("height", attritionDiversityFemale + '%');
+        $("#maleAttrVal .diversity-img-bg").css("height",  attritionDiversityMale + '%');
+    }
+    }
+    
+    
+    // diversity end attrition
+    
+    </script>
+
 </body>
