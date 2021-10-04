@@ -738,7 +738,7 @@ margin: 0px;
 margin-top: 0px;
 }
 .tenurebar {
-//width: 100%;
+
 margin-right: 4px;
 background-color: black;
 }
@@ -770,7 +770,6 @@ position: absolute;
 bottom: 0px;
 left: 0px;
 width: 100%;
-//background: blue;
 height: 0%;
 }
 
@@ -865,6 +864,39 @@ width: 100%;
 }
 /* acceptance styles end*/
 
+
+
+ .diversity-attr-body {
+    display: flex;
+    background: #fff;
+    padding-top: 25px;
+    padding-bottom: 17px;
+    justify-content: center;
+    box-shadow: rgb(204 204 204) 0px 2px 8px 0px, rgb(204 204 204) 0px 2px 6px 0px;
+    border-radius: 8px;
+    position: relative;
+    top: -16px;
+    padding-left: 8px;
+    padding-right: 8px;
+ }
+
+ .div-attr-wrapper {
+    margin-top: -20px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+ }
+ .diversity-attr-heading {
+    padding: 8px 55px;
+    background: linear-gradient(to top, #458E8E, #00A0A0);
+    border-radius: 4px;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+ }
 
 </style>
 </head>
@@ -1632,6 +1664,39 @@ width: 100%;
             </div>
 </div>
             <!-- location metrics end -->
+
+            <!-- diversity start -->
+            <div class="width-helper diversity-attrition-container">
+                <div class="div-attr-wrapper">
+                    <div class="diversity-attr-heading">Diversity Mix</div>
+                    <div class="diversity-attr-body">
+                        <div class="diversity-container">
+                            <div id="femaleAttrVal" class="diversity-item">
+                                <div class="diversity-img-container">
+                                    <div class="diversity-img-bg divercity-background-female">&nbsp;</div>
+                                    <img src="25cd4480caa34fd88460a4e70e543fba.png" style="border: 0; width: 47px; height: 80px;"/>
+                                </div>
+                                <div class="diver-val">
+                                    <SpotfireControl id="c8338f62b82042c5b170eb180dd6c745" />
+                                </div>
+                            </div>
+                            
+                            <div id="maleAttrVal" class="diversity-item">
+                                <div class="diversity-img-container">
+                                    <div class="diversity-img-bg divercity-background-male">&nbsp;</div>
+                                    <img src="b1d3f65509134525b8706d6a1d75b30b.png" style="border: 0; width: 47px; height: 80px;"/>
+                                </div>
+                                <div class="diver-val">
+                                    <SpotfireControl id="bb1fe31281de4e9a8da08805473eb3bd" />
+                                </div>
+                            </div>
+                            
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- diversity end -->
+
             </div>
 
         </div>
