@@ -1,0 +1,15 @@
+Error(s) during update
+Type: SyntaxError
+Message: Unexpected token <
+Stacktrace: SyntaxError: Unexpected token <
+    at eval (<anonymous>)
+    at http://localhost:8018/?package=js:40:107
+    at Function.globalEval (http://localhost:8018/?package=js:41:3)
+    at domManip (http://localhost:8018/?package=js:557:15)
+    at jQuery.fn.init.replaceWith (http://localhost:8018/?package=js:586:8)
+    at jQuery.fn.init.$.fn.(anonymous function) [as replaceWith] (http://localhost:8018/?package=js:12572:25)
+    at Object.<anonymous> (http://localhost:8018/?package=js:12430:127)
+    at Function.each (http://localhost:8018/?package=js:43:116)
+    at updateDocument (http://localhost:8018/?package=js:12429:52)
+    at receiveCallbackFromRequest (http://localhost:8018/?package=js:12446:1)
+
