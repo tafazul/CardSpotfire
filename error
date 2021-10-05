@@ -12,4 +12,10 @@ Stacktrace: SyntaxError: Unexpected token <
     at Function.each (http://localhost:8018/?package=js:43:116)
     at updateDocument (http://localhost:8018/?package=js:12429:52)
     at receiveCallbackFromRequest (http://localhost:8018/?package=js:12446:1)
+    
+    
+    function redrawSrcMx() {
+       console.log('redrawing srcmix');
+	console.log(srcMxMap);
+    }
 
