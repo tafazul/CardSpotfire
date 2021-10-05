@@ -275,12 +275,10 @@
         width: 85%;
         margin-left: auto;
         margin-right: auto;
-        //height:5%;
     }
 
     .head-text {
         font-size: 16px;
-        //font-weight:bold;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -340,7 +338,6 @@
     .val {
         display: flex;
         font-size: 14px;
-        //color:#ccc;
         font-weight: bold;
     }
 
@@ -438,7 +435,6 @@
 
     .pyramid-heading {
         padding: 8px 55px;
-        //background: linear-gradient(to top, #458E8E, #00A0A0);
         border-radius: 4px;
         display: inline-block;
         position: relative;
@@ -457,25 +453,21 @@
     /* pyramid bar colors starts */
 
     .grade101 {
-        //background-color:#5A717A;
         background: linear-gradient(to right, #949EA2, #5A717A);
 
     }
 
     .grade108 {
-        //background-color:#72c3f3;
         background: linear-gradient(to right, #93B8D7, #72c3f3);
 
     }
 
     .grade111 {
-        //background-color:#A58EE8;
         background: linear-gradient(to right, #CFC2F3, #A58EE8);
 
     }
 
     .grade112 {
-        //background-color:#f8e487;
         background: linear-gradient(to right, #F9EEBC, #f8e487);
 
     }
@@ -824,7 +816,6 @@
     }
 
     .tenurebar {
-        //width: 100%;
         margin-right: 4px;
         background-color: black;
     }
@@ -859,7 +850,6 @@
         bottom: 0px;
         left: 0px;
         width: 100%;
-        //background: blue;
         height: 0%;
     }
 
@@ -1045,6 +1035,63 @@
     }
 
     /* Attrition styles end*/
+
+
+    /* source mix styles start */
+    .source-mix-container {
+        margin-top: -20px;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .source-mix-body {
+        background: #fff;
+        padding-top: 25px;
+        padding-bottom: 17px;
+        justify-content: center;
+        box-shadow: rgb(204 204 204) 0px 2px 8px 0px, rgb(204 204 204) 0px 2px 6px 0px;
+        border-radius: 8px;
+        position: relative;
+        top: -16px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .source-mix-heading {
+        padding: 8px 55px;
+        background: linear-gradient(to top, #458E8E, #00A0A0);
+        border-radius: 4px;
+        display: inline-block;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 1;
+        position: relative;
+    }
+    .source-mix-bar-container {
+        flex: 1;
+        padding: 2px 0px;
+    }
+    .source-mix-row {
+        display: flex;
+    }
+    .source-mix-axes {
+        flex: 0;
+    }
+    .source-mix-label {
+        flex: 0;
+        white-space: nowrap;
+    }
+    .source-mix-val {
+        flex: 0;
+    }
+    .source-mix-bar {
+        background-color: #000;
+        height: 100%;
+    }
+    .displayNone {
+        display: none;
+    }
+    /* source mix end */
 </style>
 </head>
 
@@ -1658,6 +1705,25 @@
                         </div>
                     </div>
                     <!-- acceptance end -->
+
+                    <!-- source mix start -->
+                    <div class="width-helper">
+                        <div class="source-mix-container">
+                            <div class="source-mix-heading">Source Mix</div>
+                            <div class="source-mix-body">
+                                <div id="srcmxSocialMedia" class="displayNone">20</div>
+                                <div id="srcmxDirect" class="displayNone">10</div>
+                                <div id="srcmxReferal" class="displayNone">5</div>
+                                <div id="srcmxInternal" class="displayNone">5</div>
+                                <div id="srcmxAgency" class="displayNone">10</div>
+                                <div id="srcmxColleag" class="displayNone">10</div>
+                                <div id="srcmxTemp" class="displayNone">25</div>
+                                <div id="srcmxFormer" class="displayNone">15</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- source mix end -->
+                    
 
                 </div>
                 <div class="content-col">
@@ -2366,4 +2432,204 @@
 // diversity end attrition
 
     </script>
+
+<script>
+    // source mix start
+
+    // <div class="source-mix-row">
+    //     <div class="source-mix-label">
+    //         College/Grad Recruit
+    //     </div>
+    //     <div class="source-mix-axes">&nbsp;
+    //     </div>
+    //     <div class="source-mix-bar-container">
+    //         <div class="source-mix-bar">
+    //         </div>
+    //     </div>
+    //     <div class="source-mix-val">52
+    //     </div>
+    // </div> 
+
+    var srcMxMap = [
+        {'srcmxSocialMedia': {label: 'Social Media', val: 0}}, 
+        {'srcmxDirect': {label: 'Direct', val: 0}},
+        {'srcmxReferal': {label: 'Employee Referal', val: 0}}, 
+        {'srcmxInternal': {label: 'Internal', val: 0}},
+        {'srcmxAgency': {label: 'Agency', val: 0}},
+        {'srcmxColleag': {label: 'Colleague', val: 0}},
+        {'srcmxTemp': {label: 'Temp', val: 0}}, 
+        {'srcmxFormer': {label: 'Former Employee', val: 0}}
+    ]
+
+    var srcmxSocialMedia = 0;
+    var srcmxDirect = 0;
+    var srcmxReferal = 0;
+    var srcmxInternal = 0;
+    var srcmxAgency = 0;
+    var srcmxColleag = 0;
+    var srcmxTemp = 0;
+    var srcmxFormer = 0;
+
+    $("#srcmxSocialMedia").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxSocialMedia') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxDirect").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxDirect') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxReferal").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxReferal') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxInternal").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxInternal') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxAgency").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxAgency') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxColleag").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxColleag') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxTemp").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxTemp') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxFormer").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxFormer') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    return;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    function redrawSrcMx() {
+        if(!isNaN(srcmxSocialMedia) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect) && !isNaN(srcmxDirect)) {
+            var sortedSrcMx = srcMxMap.sort((a,b) => {
+                var aKey = Object.keys(a)[0];
+                var bKey = Object.keys(b)[0];
+                var aEle = a[aKey];
+                var bEle = b[bKey];
+                return bEle['val'] - aEle['val']
+            })
+
+            for(var i=0; i<sortedSrcMx.length; i++) {
+                var srcMxItem = sortedSrcMx[i];
+                var srcMxItemKey = Object.keys(srcMxItem)[0];
+                var srcMxItemVal = srcMxItem[srcMxItemKey]['val'];
+                var srcMxItemLabel = srcMxItem[srcMxItemKey]['label'];
+                var rowSrxMx = $('<div>', {
+                    class: 'source-mix-row'
+                }).appendTo('.source-mix-body');
+
+                $('<div>', {
+                    class: 'source-mix-label',
+                    html: srcMxItemLabel,
+                }).appendTo(rowSrxMx);
+                
+                $('<div>', {
+                    class: 'source-mix-axes',
+                    html: ' ',
+                }).appendTo(rowSrxMx);
+
+                var barContainer = $('<div>', {
+                    class: 'source-mix-bar-container',
+                    html: ' ',
+                    
+                }).appendTo(rowSrxMx);
+                barContainer.css({flex: srcMxItemVal});
+
+                $('<div>', {
+                    class: 'source-mix-val',
+                    html: srcMxItemVal
+                }).appendTo(rowSrxMx);
+            }
+
+        }
+    }
+
+    // source mix end 
+    
+
+    </script>
 </body>
+
