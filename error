@@ -18,4 +18,69 @@ Stacktrace: SyntaxError: Unexpected token <
        console.log('redrawing srcmix');
 	console.log(srcMxMap);
     }
+    
+    
+<script>
+// ops pyramid head count start
+		var opsGrade101Val = '';
+		var opsGrade108Val = '';
+		var opsGrade111Val = '';
+		var opsGrade112Val = '';
+		var opsGrade116Val = '';
+        var opsCwrVal = '';
+
+	$("#opsGrade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade101Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade108Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade111Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	     }
+	})
+	$("#opsGrade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade112Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade116Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+    $("#opsCwr .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+            opsCwrVal = parseInt($(this).text());
+		    redrawOpsPyramid();
+	    }
+	})
+
+	function redrawOpsPyramid() {
+		if(!isNaN(opsGrade101Val) && !isNaN(opsGrade108Val) && !isNaN(opsGrade111Val) && !isNaN(opsGrade112Val) && !isNaN(opsGrade116Val) && !isNaN(opsCwrVal)
+
+) {
+
+var maxGradVal = Math.max(opsGrade108Val,opsGrade111Val,opsGrade112Val,opsGrade116Val,opsGrade101Val);
+	$("#opsGrade101 .pyramid-bar").css("width", ((opsGrade101Val/maxGradVal) * 100) + '%');
+$("#opsGrade108 .pyramid-bar").css("width", ((opsGrade108Val/maxGradVal) * 100) + '%');
+$("#opsGrade111 .pyramid-bar").css("width", ((opsGrade111Val/maxGradVal) * 100) + '%');
+$("#opsGrade112 .pyramid-bar").css("width", ((opsGrade112Val/maxGradVal) * 100) + '%');
+$("#opsGrade116 .pyramid-bar").css("width", ((opsGrade116Val/maxGradVal) * 100) + '%');
+$("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxGradVal) * 100) + '%');
+		}
+
+	}
+// ops pyramid head count end
+</script>
 
