@@ -84,3 +84,61 @@ $("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxGradVal) * 100) + '%');
 // ops pyramid head count end
 </script>
 
+
+
+<script>
+// atr pyramid head count start
+		var atrGrade101Val = '';
+		var atrGrade108Val = '';
+		var atrGrade111Val = '';
+		var atrGrade112Val = '';
+		var atrGrade116Val = '';
+
+	$("#atrGrade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade101Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade108Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade111Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	     }
+	})
+	$("#atrGrade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade112Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade116Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+
+	function redrawAttrPyramid() {
+		if(!isNaN(atrGrade101Val) && !isNaN(atrGrade108Val) && !isNaN(atrGrade111Val) && !isNaN(atrGrade112Val) && !isNaN(atrGrade116Val) && !isNaN(opsCwrVal)
+
+) {
+
+var maxAtrGradVal = Math.max(atrGrade108Val,atrGrade111Val,atrGrade112Val,atrGrade116Val,atrGrade101Val);
+	$("#atrGrade101 .pyramid-bar").css("width", ((atrGrade101Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade108 .pyramid-bar").css("width", ((atrGrade108Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade111 .pyramid-bar").css("width", ((atrGrade111Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade112 .pyramid-bar").css("width", ((atrGrade112Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade116 .pyramid-bar").css("width", ((atrGrade116Val/maxAtrGradVal) * 100) + '%');
+		}
+
+	}
+// atr pyramid head count end
+</script>
+
