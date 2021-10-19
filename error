@@ -136,12 +136,12 @@ $(ytdBudgetEle1).on('DOMSubtreeModified',function(){
 
 <script>
 $(document).ready(function(){
-var ytdBudgetEle1 = document.getElementById('forecastVal1');
-$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
-	var budgetValText1 = document.getElementById('forecastVal1').innerText.replace('$', '');
-        var forecastVal1 = parseInt(budgetValText1);
+var ytdForecastEle1 = document.getElementById('forecastVal1');
+$(ytdForecastEle1).on('DOMSubtreeModified',function(){
+	var forecastValText1 = document.getElementById('forecastVal1').innerText.replace('$', '');
+        var forecastVal1 = parseInt(forecastValText1);
         var forecastBarIndicator1 = document.querySelector('#forecastVal1+.background-bar .bar-indicator');
-        forecastBarIndicator1.style.width =  90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (forecastVal1 / 100) + '%');
+        forecastBarIndicator1.style.width =  90 * (forecastVal1 / 100) > 100 ? '100%' : (90 * (forecastVal1 / 100) + '%');
   })
 })
 </script>
