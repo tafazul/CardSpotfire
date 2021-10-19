@@ -1,144 +1,148 @@
-Error(s) during update
-Type: SyntaxError
-Message: Unexpected token <
-Stacktrace: SyntaxError: Unexpected token <
-    at eval (<anonymous>)
-    at http://localhost:8018/?package=js:40:107
-    at Function.globalEval (http://localhost:8018/?package=js:41:3)
-    at domManip (http://localhost:8018/?package=js:557:15)
-    at jQuery.fn.init.replaceWith (http://localhost:8018/?package=js:586:8)
-    at jQuery.fn.init.$.fn.(anonymous function) [as replaceWith] (http://localhost:8018/?package=js:12572:25)
-    at Object.<anonymous> (http://localhost:8018/?package=js:12430:127)
-    at Function.each (http://localhost:8018/?package=js:43:116)
-    at updateDocument (http://localhost:8018/?package=js:12429:52)
-    at receiveCallbackFromRequest (http://localhost:8018/?package=js:12446:1)
-    
-    
-    function redrawSrcMx() {
-       console.log('redrawing srcmix');
-	console.log(srcMxMap);
-    }
-    
-    
-<script>
-// ops pyramid head count start
-		var opsGrade101Val = '';
-		var opsGrade108Val = '';
-		var opsGrade111Val = '';
-		var opsGrade112Val = '';
-		var opsGrade116Val = '';
-        var opsCwrVal = '';
 
-	$("#opsGrade101 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		opsGrade101Val = parseInt($(this).text());
-		redrawOpsPyramid();
-	    }
-	})
-	$("#opsGrade108 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		opsGrade108Val = parseInt($(this).text());
-		redrawOpsPyramid();
-	    }
-	})
-	$("#opsGrade111 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		opsGrade111Val = parseInt($(this).text());
-		redrawOpsPyramid();
-	     }
-	})
-	$("#opsGrade112 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		opsGrade112Val = parseInt($(this).text());
-		redrawOpsPyramid();
-	    }
-	})
-	$("#opsGrade116 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		opsGrade116Val = parseInt($(this).text());
-		redrawOpsPyramid();
-	    }
-	})
-    $("#opsCwr .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-            opsCwrVal = parseInt($(this).text());
-		    redrawOpsPyramid();
-	    }
-	})
+<!DOCTYPE html>
+<html lang="en">
 
-	function redrawOpsPyramid() {
-		if(!isNaN(opsGrade101Val) && !isNaN(opsGrade108Val) && !isNaN(opsGrade111Val) && !isNaN(opsGrade112Val) && !isNaN(opsGrade116Val) && !isNaN(opsCwrVal)
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .SLM-Card {
+	    margin-top:0px;            
+	    max-width: 215px;
+            padding: 8px;
+            border: 1px solid #ccc;
+	    border-radius:6px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px 0 #ccc, 0 2px 6px 0 #ccc;
+        }
+        .SLM-Card .title {
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .SLM-Card .item-row {
+            display: flex;
+	    flex-wrap:wrap;
+            margin-bottom: 2px;
+        }
+        .SLM-Card .item-row .item-value {
+            margin-left: auto;
+        }
+	.SLM-Card .item-row .item-name {
+            font-size:11px;
+	
+        }
 
-) {
-
-var maxGradVal = Math.max(opsGrade108Val,opsGrade111Val,opsGrade112Val,opsGrade116Val,opsGrade101Val);
-	$("#opsGrade101 .pyramid-bar").css("width", ((opsGrade101Val/maxGradVal) * 100) + '%');
-$("#opsGrade108 .pyramid-bar").css("width", ((opsGrade108Val/maxGradVal) * 100) + '%');
-$("#opsGrade111 .pyramid-bar").css("width", ((opsGrade111Val/maxGradVal) * 100) + '%');
-$("#opsGrade112 .pyramid-bar").css("width", ((opsGrade112Val/maxGradVal) * 100) + '%');
-$("#opsGrade116 .pyramid-bar").css("width", ((opsGrade116Val/maxGradVal) * 100) + '%');
-$("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxGradVal) * 100) + '%');
-		}
-
+	.background-bar {
+            margin-top:2px;
+	    width: 80%;
+            background: #fff !important;
+            height: 9px;
+            position: relative;
+        }
+	.item-value-bigvalue span{
+	font-size:16px !important;
 	}
-// ops pyramid head count end
-</script>
+	.item-value-label{
+	font-size:12px !important;
+	}
+
+        #budgetVal1+.background-bar .bar-indicator {
+            width: 7.4% !important;
+            background-color:#9a9a9a !important;
+            position: absolute;
+            top: 0px;
+            height: 9px;
+        }
+
+        #revenueValue1+.background-bar .bar-indicator {
+            background-color:#72c3f3;
+            position: absolute;
+            top: 0px;
+            height: 9px;
+	    width:9%;
+        }
+	.SLM-Card .item-row .item-value.rpBudget span {
+		color: #4a4a4a !important;
+		 //background: linear-gradient(-135deg,#84d9a3,#84d9a3);
+		 //padding:4px 6px;
+		 //border-radius: 15px;
+		 //font-size:11px;
+		 
+	}
+
+#SLMActualRevenueVal {
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    border-radius: 15px;
+    height: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <div id="ytdBudgetDiv1" class="SLM-Card SLM-Card-budget">
+        <div class="item-row">
+            <div class="item-name item-value-label">Actual SLM</div>
+            <div id="revenueValue1" class="item-value item-value-bigvalue"><SpotfireControl id="06ac3f4da14544af877b005ab0fe1e80" /></div>
+		<div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
+        </div>
+        <div class="item-row">
+            <div class="item-name item-value-label">Forecast SLM</div>
+            <div id="budgetVal1" class="item-value item-value-bigvalue"><SpotfireControl id="f0043646f441466d878a9c93f4f676eb" /></div>
+	    <div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
+        </div>
+	<div class="budget-bar"></div>
+	
+        
+        <div class="item-row">
+            <div class="item-name revperbud item-value-label">%Actual to Forecast</div>
+            <div id="SLMActualRevenueVal" class="item-value rpBudget"><SpotfireControl id="dc88c70511d84e6492e40a69d1d5ccc3" /></div>
 
 
+        </div>
+    </div>
+</body>
 
 <script>
-// atr pyramid head count start
-		var atrGrade101Val = '';
-		var atrGrade108Val = '';
-		var atrGrade111Val = '';
-		var atrGrade112Val = '';
-		var atrGrade116Val = '';
+$(document).ready(function(){
+var ytdBudgetEle1 = document.getElementById('ytdBudgetDiv1');
+$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
+	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
+        var budgetVal1 = parseInt(budgetValText1);
+        var revenuteText1 = document.getElementById('revenueValue1').innerText.replace('$', '');
+        var revenueValue1 = parseInt(revenuteText1);
+        var revenueBarIndicator1 = document.querySelector('#revenueValue1+.background-bar .bar-indicator');
+        revenueBarIndicator1.style.width = budgetVal1 === revenueValue1 ? ('90%') : (budgetVal1 < revenueValue1 ? ((90 * (revenueValue1 / budgetVal1)) > 100 ? '100%' : (90 * (revenueValue1 / budgetVal1) + '%')) : (90 * (revenueValue1 / budgetVal1) + '%'));
+  })
+})
+        
+    </script>
+</html>
 
-	$("#atrGrade101 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		atrGrade101Val = parseInt($(this).text());
-		redrawAttrPyramid();
-	    }
-	})
-	$("#atrGrade108 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		atrGrade108Val = parseInt($(this).text());
-		redrawAttrPyramid();
-	    }
-	})
-	$("#atrGrade111 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		atrGrade111Val = parseInt($(this).text());
-		redrawAttrPyramid();
-	     }
-	})
-	$("#atrGrade112 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		atrGrade112Val = parseInt($(this).text());
-		redrawAttrPyramid();
-	    }
-	})
-	$("#atrGrade116 .left-val").on('DOMSubtreeModified', function() {
-	    if (!isNaN(parseInt($(this).text()))) {
-		atrGrade116Val = parseInt($(this).text());
-		redrawAttrPyramid();
-	    }
-	})
+<script>
 
-	function redrawAttrPyramid() {
-		if(!isNaN(atrGrade101Val) && !isNaN(atrGrade108Val) && !isNaN(atrGrade111Val) && !isNaN(atrGrade112Val) && !isNaN(atrGrade116Val) && !isNaN(opsCwrVal)
 
-) {
 
-var maxAtrGradVal = Math.max(atrGrade108Val,atrGrade111Val,atrGrade112Val,atrGrade116Val,atrGrade101Val);
-	$("#atrGrade101 .pyramid-bar").css("width", ((atrGrade101Val/maxAtrGradVal) * 100) + '%');
-$("#atrGrade108 .pyramid-bar").css("width", ((atrGrade108Val/maxAtrGradVal) * 100) + '%');
-$("#atrGrade111 .pyramid-bar").css("width", ((atrGrade111Val/maxAtrGradVal) * 100) + '%');
-$("#atrGrade112 .pyramid-bar").css("width", ((atrGrade112Val/maxAtrGradVal) * 100) + '%');
-$("#atrGrade116 .pyramid-bar").css("width", ((atrGrade116Val/maxAtrGradVal) * 100) + '%');
+		$("#SLMActualRevenueVal").on('DOMSubtreeModified',function(){
+
+		if(!isNaN(parseFloat($(this).text()))) {
+		 var SLMActualRevenueVal = parseFloat($(this).text());
+		 if(SLMActualRevenueVal >= 100) {
+			$(this).css("background", "#84d9a3");
+		 } else if(SLMActualRevenueVal >= 90 && SLMActualRevenueVal <100 ) {
+		 $(this).css("background", "#F7DC6F");
+		} else {
+$(this).css("background", "#F58D8D");
 		}
-
-	}
-// atr pyramid head count end
+		}
+		 
+  })
 </script>
 
