@@ -112,7 +112,7 @@ $(ytdRevenueEle1).on('DOMSubtreeModified',function(){
         var revenuteText1 = document.getElementById('revenueValue1').innerText.replace('$', '');
         var revenueValue1 = parseInt(revenuteText1);
         var revenueBarIndicator1 = document.querySelector('#revenueValue1+.background-bar .bar-indicator');
-        revenueBarIndicator1.style.width = (90 * (revenueValue1 / 100) + '%');
+        revenueBarIndicator1.style.width = 90 * (revenueValue1 / 100) > 100 ? '100%' : (90 * (revenueValue1 / 100) + '%');
   })
 })
         
@@ -127,14 +127,22 @@ var ytdBudgetEle1 = document.getElementById('budgetVal1');
 $(ytdBudgetEle1).on('DOMSubtreeModified',function(){
 	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
         var budgetVal1 = parseInt(budgetValText1);
-        var revenueBarIndicator1 = document.querySelector('#budgetVal1+.background-bar .bar-indicator');
-        revenueBarIndicator1.style.width = (90 * (budgetVal1 / 100) + '%');
+        var budgetBarIndicator1 = document.querySelector('#budgetVal1+.background-bar .bar-indicator');
+        budgetBarIndicator1.style.width = 90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (budgetVal1 / 100) + '%');
   })
 })
 </script>
 
 
 <script>
-
+$(document).ready(function(){
+var ytdBudgetEle1 = document.getElementById('forecastVal1');
+$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
+	var budgetValText1 = document.getElementById('forecastVal1').innerText.replace('$', '');
+        var forecastVal1 = parseInt(budgetValText1);
+        var forecastBarIndicator1 = document.querySelector('#forecastVal1+.background-bar .bar-indicator');
+        forecastBarIndicator1.style.width =  90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (forecastVal1 / 100) + '%');
+  })
+})
 </script>
 
