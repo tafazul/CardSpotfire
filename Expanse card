@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .SLM-Card {
+	    margin-top:0px;            
+	    max-width: 215px;
+            padding: 8px;
+            border: 1px solid #ccc;
+	    border-radius:6px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px 0 #ccc, 0 2px 6px 0 #ccc;
+        }
+        .SLM-Card .title {
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .SLM-Card .ytdexpense-item-row {
+            display: flex;
+	    flex-wrap:wrap;
+            margin-bottom: 2px;
+        }
+        .SLM-Card .ytdexpense-item-row .item-value {
+            margin-left: auto;
+        }
+	.SLM-Card .ytdexpense-item-row .ytdexpense-item-name {
+            font-size:11px;
+	
+        }
+
+	.background-bar {
+            margin-top:2px;
+	    width: 80%;
+            background: #fff !important;
+            height: 9px;
+            position: relative;
+        }
+	.item-value-bigvalue span{
+	font-size:16px !important;
+	}
+	.ytdexpense-item-value-label{
+	font-size:12px !important;
+	}
+
+        #budgetVal1+.background-bar .bar-indicator {
+            width: 0%;
+            background-color:#72c3f3;
+            position: absolute;
+            top: 0px;
+            height: 9px;
+        }
+
+        #revenueValue1+.background-bar .bar-indicator {
+            background-color:#72c3f3;
+            position: absolute;
+            top: 0px;
+            height: 9px;
+	    width:0%;
+        }
+
+ #forecastVal1+.background-bar .bar-indicator {
+            background-color:#72c3f3;
+            position: absolute;
+            top: 0px;
+            height: 9px;
+	    width:0%;
+        }
+	.SLM-Card .ytdexpense-item-row .item-value.rpBudget span {
+		color: #4a4a4a !important;
+		 
+	}
+
+#SLMActualRevenueVal {
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    border-radius: 15px;
+    height: 20px;
+}
+    </style>
+</head>
+
+<body>
+    <div id="ytdBudgetDiv1" class="SLM-Card SLM-Card-budget">
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Actual Expense</div>
+            <div id="revenueValue1" class="item-value item-value-bigvalue"><SpotfireControl id="0f7105f37933444cb3c11a8195bdf8c9" /></div>
+		<div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
+        </div>
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Budget Expense</div>
+            <div id="budgetVal1" class="item-value item-value-bigvalue"><SpotfireControl id="0940772830094756b161d5412e3cd132" /></div>
+	    <div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
+        </div>
+	
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Forecast Expense</div>
+            <div id="forecastVal1" class="item-value item-value-bigvalue"><SpotfireControl id="57758682785241d1a8498d30c6f02e88" /></div>
+	    <div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+$(document).ready(function(){
+var ytdRevenueEle1 = document.getElementById('revenueValue1');
+$(ytdRevenueEle1).on('DOMSubtreeModified',function(){
+        var revenuteText1 = document.getElementById('revenueValue1').innerText.replace('$', '');
+        var revenueValue1 = parseInt(revenuteText1);
+        var revenueBarIndicator1 = document.querySelector('#revenueValue1+.background-bar .bar-indicator');
+        revenueBarIndicator1.style.width = 90 * (revenueValue1 / 100) > 100 ? '100%' : (90 * (revenueValue1 / 100) + '%');
+  })
+})
+        
+    </script>
+</html>
+
+<script>
+
+
+$(document).ready(function(){
+var ytdBudgetEle1 = document.getElementById('budgetVal1');
+$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
+	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
+        var budgetVal1 = parseInt(budgetValText1);
+        var budgetBarIndicator1 = document.querySelector('#budgetVal1+.background-bar .bar-indicator');
+        budgetBarIndicator1.style.width = 90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (budgetVal1 / 100) + '%');
+  })
+})
+</script>
+
+
+<script>
+$(document).ready(function(){
+var ytdBudgetEle1 = document.getElementById('forecastVal1');
+$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
+	var budgetValText1 = document.getElementById('forecastVal1').innerText.replace('$', '');
+        var forecastVal1 = parseInt(budgetValText1);
+        var forecastBarIndicator1 = document.querySelector('#forecastVal1+.background-bar .bar-indicator');
+        forecastBarIndicator1.style.width =  90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (forecastVal1 / 100) + '%');
+  })
+})
+</script>
