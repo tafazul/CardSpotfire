@@ -48,7 +48,7 @@
 	font-size:12px !important;
 	}
 
-        #budgetVal1+.background-bar .bar-indicator {
+        #ytdExpenseBudgetVal1+.background-bar .bar-indicator {
             width: 0% !important;
             background-color:#9a9a9a !important;
             position: absolute;
@@ -56,7 +56,7 @@
             height: 9px;
         }
 
-        #revenueValue1+.background-bar .bar-indicator {
+        #ytdExpenseRevenueValue1+.background-bar .bar-indicator {
             background-color:#72c3f3;
             position: absolute;
             top: 0px;
@@ -82,14 +82,14 @@
     <div id="ytdBudgetDiv1" class="SLM-Card SLM-Card-budget">
         <div class="ytdexpense-item-row">
             <div class="ytdexpense-item-name ytdexpense-item-value-label">Actual Expense</div>
-            <div id="revenueValue1" class="item-value item-value-bigvalue">$85M</div>
+            <div id="ytdExpenseRevenueValue1" class="item-value item-value-bigvalue">$85M</div>
 		<div class="background-bar">&nbsp;
                 <div class="bar-indicator">&nbsp;</div>
             </div>
         </div>
         <div class="ytdexpense-item-row">
             <div class="ytdexpense-item-name ytdexpense-item-value-label">Budget Expense</div>
-            <div id="budgetVal1" class="item-value item-value-bigvalue">$500M</div>
+            <div id="ytdExpenseBudgetVal1" class="item-value item-value-bigvalue">$500M</div>
 	    <div class="background-bar">&nbsp;
                 <div class="bar-indicator">&nbsp;</div>
             </div>
@@ -97,7 +97,7 @@
 	
         <div class="ytdexpense-item-row">
             <div class="ytdexpense-item-name ytdexpense-item-value-label">Forecast Expense</div>
-            <div id="forecastVal1" class="item-value item-value-bigvalue">$56M</div>
+            <div id="ytdExpenseForecastVal1" class="item-value item-value-bigvalue">$56M</div>
 	    <div class="background-bar">&nbsp;
                 <div class="bar-indicator">&nbsp;</div>
             </div>
@@ -107,12 +107,12 @@
 
 <script>
 $(document).ready(function(){
-var ytdRevenueEle1 = document.getElementById('revenueValue1');
+var ytdRevenueEle1 = document.getElementById('ytdExpenseRevenueValue1');
 $(ytdRevenueEle1).on('DOMSubtreeModified',function(){
-        var revenuteText1 = document.getElementById('revenueValue1').innerText.replace('$', '');
-        var revenueValue1 = parseInt(revenuteText1);
-        var revenueBarIndicator1 = document.querySelector('#revenueValue1+.background-bar .bar-indicator');
-        revenueBarIndicator1.style.width = 90 * (revenueValue1 / 100) > 100 ? '100%' : (90 * (revenueValue1 / 100) + '%');
+        var revenuteText1 = document.getElementById('ytdExpenseRevenueValue1').innerText.replace('$', '');
+        var ytdExpenseRevenueValue1 = parseInt(revenuteText1);
+        var revenueBarIndicator1 = document.querySelector('#ytdExpenseRevenueValue1+.background-bar .bar-indicator');
+        revenueBarIndicator1.style.width = 90 * (ytdExpenseRevenueValue1 / 100) > 100 ? '100%' : (90 * (ytdExpenseRevenueValue1 / 100) + '%');
   })
 })
         
@@ -123,12 +123,12 @@ $(ytdRevenueEle1).on('DOMSubtreeModified',function(){
 
 
 $(document).ready(function(){
-var ytdBudgetEle1 = document.getElementById('budgetVal1');
+var ytdBudgetEle1 = document.getElementById('ytdExpenseBudgetVal1');
 $(ytdBudgetEle1).on('DOMSubtreeModified',function(){
-	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
-        var budgetVal1 = parseInt(budgetValText1);
-        var budgetBarIndicator1 = document.querySelector('#budgetVal1+.background-bar .bar-indicator');
-        budgetBarIndicator1.style.width = 90 * (budgetVal1 / 100) > 100 ? '100%' : (90 * (budgetVal1 / 100) + '%');
+	var budgetValText1 = document.getElementById('ytdExpenseBudgetVal1').innerText.replace('$', '');
+        var ytdExpenseBudgetVal1 = parseInt(budgetValText1);
+        var budgetBarIndicator1 = document.querySelector('#ytdExpenseBudgetVal1+.background-bar .bar-indicator');
+        budgetBarIndicator1.style.width = 90 * (ytdExpenseBudgetVal1 / 100) > 100 ? '100%' : (90 * (ytdExpenseBudgetVal1 / 100) + '%');
   })
 })
 </script>
@@ -136,12 +136,12 @@ $(ytdBudgetEle1).on('DOMSubtreeModified',function(){
 
 <script>
 $(document).ready(function(){
-var ytdForecastEle1 = document.getElementById('forecastVal1');
+var ytdForecastEle1 = document.getElementById('ytdExpenseForecastVal1');
 $(ytdForecastEle1).on('DOMSubtreeModified',function(){
-	var forecastValText1 = document.getElementById('forecastVal1').innerText.replace('$', '');
-        var forecastVal1 = parseInt(forecastValText1);
-        var forecastBarIndicator1 = document.querySelector('#forecastVal1+.background-bar .bar-indicator');
-        forecastBarIndicator1.style.width =  90 * (forecastVal1 / 100) > 100 ? '100%' : (90 * (forecastVal1 / 100) + '%');
+	var forecastValText1 = document.getElementById('ytdExpenseForecastVal1').innerText.replace('$', '');
+        var ytdExpenseForecastVal1 = parseInt(forecastValText1);
+        var forecastBarIndicator1 = document.querySelector('#ytdExpenseForecastVal1+.background-bar .bar-indicator');
+        forecastBarIndicator1.style.width =  90 * (ytdExpenseForecastVal1 / 100) > 100 ? '100%' : (90 * (ytdExpenseForecastVal1 / 100) + '%');
   })
 })
 </script>
