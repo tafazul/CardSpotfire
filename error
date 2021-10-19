@@ -21,15 +21,15 @@
             text-transform: uppercase;
             margin-bottom: 4px;
         }
-        .SLM-Card .item-row {
+        .SLM-Card .ytdexpense-item-row {
             display: flex;
 	    flex-wrap:wrap;
             margin-bottom: 2px;
         }
-        .SLM-Card .item-row .item-value {
+        .SLM-Card .ytdexpense-item-row .item-value {
             margin-left: auto;
         }
-	.SLM-Card .item-row .item-name {
+	.SLM-Card .ytdexpense-item-row .ytdexpense-item-name {
             font-size:11px;
 	
         }
@@ -44,12 +44,12 @@
 	.item-value-bigvalue span{
 	font-size:16px !important;
 	}
-	.item-value-label{
+	.ytdexpense-item-value-label{
 	font-size:12px !important;
 	}
 
         #budgetVal1+.background-bar .bar-indicator {
-            width: 7.4% !important;
+            width: 0% !important;
             background-color:#9a9a9a !important;
             position: absolute;
             top: 0px;
@@ -61,14 +61,10 @@
             position: absolute;
             top: 0px;
             height: 9px;
-	    width:9%;
+	        width:0%;
         }
-	.SLM-Card .item-row .item-value.rpBudget span {
+	.SLM-Card .ytdexpense-item-row .item-value.rpBudget span {
 		color: #4a4a4a !important;
-		 //background: linear-gradient(-135deg,#84d9a3,#84d9a3);
-		 //padding:4px 6px;
-		 //border-radius: 15px;
-		 //font-size:11px;
 		 
 	}
 
@@ -84,42 +80,39 @@
 
 <body>
     <div id="ytdBudgetDiv1" class="SLM-Card SLM-Card-budget">
-        <div class="item-row">
-            <div class="item-name item-value-label">Actual SLM</div>
-            <div id="revenueValue1" class="item-value item-value-bigvalue"><SpotfireControl id="06ac3f4da14544af877b005ab0fe1e80" /></div>
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Actual Expense</div>
+            <div id="revenueValue1" class="item-value item-value-bigvalue">$85M</div>
 		<div class="background-bar">&nbsp;
                 <div class="bar-indicator">&nbsp;</div>
             </div>
         </div>
-        <div class="item-row">
-            <div class="item-name item-value-label">Forecast SLM</div>
-            <div id="budgetVal1" class="item-value item-value-bigvalue"><SpotfireControl id="f0043646f441466d878a9c93f4f676eb" /></div>
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Budget Expense</div>
+            <div id="budgetVal1" class="item-value item-value-bigvalue">$500M</div>
 	    <div class="background-bar">&nbsp;
                 <div class="bar-indicator">&nbsp;</div>
             </div>
         </div>
-	<div class="budget-bar"></div>
 	
-        
-        <div class="item-row">
-            <div class="item-name revperbud item-value-label">%Actual to Forecast</div>
-            <div id="SLMActualRevenueVal" class="item-value rpBudget"><SpotfireControl id="dc88c70511d84e6492e40a69d1d5ccc3" /></div>
-
-
+        <div class="ytdexpense-item-row">
+            <div class="ytdexpense-item-name ytdexpense-item-value-label">Forecast Expense</div>
+            <div id="forecastVal1" class="item-value item-value-bigvalue">$56M</div>
+	    <div class="background-bar">&nbsp;
+                <div class="bar-indicator">&nbsp;</div>
+            </div>
         </div>
     </div>
 </body>
 
 <script>
 $(document).ready(function(){
-var ytdBudgetEle1 = document.getElementById('ytdBudgetDiv1');
-$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
-	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
-        var budgetVal1 = parseInt(budgetValText1);
+var ytdRevenueEle1 = document.getElementById('revenueValue1');
+$(ytdRevenueEle1).on('DOMSubtreeModified',function(){
         var revenuteText1 = document.getElementById('revenueValue1').innerText.replace('$', '');
         var revenueValue1 = parseInt(revenuteText1);
         var revenueBarIndicator1 = document.querySelector('#revenueValue1+.background-bar .bar-indicator');
-        revenueBarIndicator1.style.width = budgetVal1 === revenueValue1 ? ('90%') : (budgetVal1 < revenueValue1 ? ((90 * (revenueValue1 / budgetVal1)) > 100 ? '100%' : (90 * (revenueValue1 / budgetVal1) + '%')) : (90 * (revenueValue1 / budgetVal1) + '%'));
+        revenueBarIndicator1.style.width = (90 * (revenueValue1 / 100) + '%');
   })
 })
         
@@ -129,20 +122,19 @@ $(ytdBudgetEle1).on('DOMSubtreeModified',function(){
 <script>
 
 
-
-		$("#SLMActualRevenueVal").on('DOMSubtreeModified',function(){
-
-		if(!isNaN(parseFloat($(this).text()))) {
-		 var SLMActualRevenueVal = parseFloat($(this).text());
-		 if(SLMActualRevenueVal >= 100) {
-			$(this).css("background", "#84d9a3");
-		 } else if(SLMActualRevenueVal >= 90 && SLMActualRevenueVal <100 ) {
-		 $(this).css("background", "#F7DC6F");
-		} else {
-$(this).css("background", "#F58D8D");
-		}
-		}
-		 
+$(document).ready(function(){
+var ytdBudgetEle1 = document.getElementById('budgetVal1');
+$(ytdBudgetEle1).on('DOMSubtreeModified',function(){
+	var budgetValText1 = document.getElementById('budgetVal1').innerText.replace('$', '');
+        var budgetVal1 = parseInt(budgetValText1);
+        var revenueBarIndicator1 = document.querySelector('#budgetVal1+.background-bar .bar-indicator');
+        revenueBarIndicator1.style.width = (90 * (budgetVal1 / 100) + '%');
   })
+})
+</script>
+
+
+<script>
+
 </script>
 
