@@ -1,1 +1,2 @@
-$("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxopsGradVal) * 100 == 0 ? 1 : (opsCwrVal/maxopsGradVal) * 100) + '%');
+$("#opsGrade116 .pyramid-bar").css("width", ((opsGrade116Val/maxopsGradVal) * 100 == 0 ? 1 : (opsGrade116Val/maxopsGradVal) * 100) + '%');
+$("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxopsGradVal) * 100 == 0 ? 1 : (opsCwrVal/maxopsGradVal) * 100) + '%')
