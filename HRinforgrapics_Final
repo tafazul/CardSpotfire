@@ -1,0 +1,2785 @@
+
+<style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* hamburger styles start */
+        #hamburger {
+            width: 18px;
+            height: 12px;
+            position: relative;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+            cursor: pointer;
+        }
+
+        #hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #fff;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+        #hamburger span:nth-child(1) {
+            top: 0px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(2) {
+            top: 5px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger span:nth-child(3) {
+            top: 10px;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        #hamburger.open span:nth-child(1) {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: -3px;
+            left: 0px;
+        }
+
+        #hamburger.open span:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+        }
+
+        #hamburger.open span:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 10px;
+            left: 0px;
+        }
+
+        /* hamburger styles end */
+
+        /* header styles start */
+        header {
+            z-index:1000;
+	    background:linear-gradient(to bottom, #A263E5, #6B2FAB);
+            padding: 8px 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            right: 0px;
+            left: 0px;
+            top: 34px;
+	    height:38px;
+	    font-family: "Times New Roman", Times, serif;
+        }
+
+        .filter-icon-container {
+            width: 18px;
+            margin-left: auto;
+            cursor: pointer;
+            display: flex;
+        }
+
+        .logo-container {
+            margin-left: 32px;
+        }
+
+        .page-title-container {
+            flex-grow: 1;
+            text-align: center;
+	    font-size:28px;
+	    font-weight:bold;
+        }
+
+        /* header styles end */
+        main {
+            margin-top: 44px;
+            display: flex;
+        }
+
+        #page-content {
+            flex-grow: 1;
+            background-color: #f2f2f2;
+            z-index: 1;
+        }
+
+        .content-col:not(:last-child) {
+            border-right: 1px solid #ccc;
+        }
+
+
+        /* menu styles start */
+        .menu-container ul{
+            margin: 0px;
+            width: 100%;
+            padding: 8px 0px ;
+        }
+
+        .menu-container ul li {
+            list-style-type: none;
+            white-space: nowrap;
+            overflow: hidden ;
+	    padding-left: 16px;
+	    padding-right: 16px;
+	    margin-bottom: 15px;
+	    font-size:12px;
+	    font-weight:bold;
+        }
+.menu-container ul li:first-child {
+		margin-top:15PX;
+}
+.menu-container ul li:hover {
+	background: #ccc;
+	cursor: pointer;
+}
+
+        .menu-container.open {
+            width: 200px;
+        }
+        .menu-container.open ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 130px);
+            border-right: 1px solid #dcdcdc;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            width: 25px;
+            flex-shrink: 0;
+        }
+
+        .menu-name {
+            display: none;
+            margin-left: 8px;
+        }
+
+        .menu-name.open {
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        /* menu styles end */
+
+        /* filter styles start */
+        .filters-container {
+            width: 64px;
+            transition: width .5s ease-in-out;
+            min-height: calc(100vh - 120px);
+            border-left: 1px solid #dcdcdc;
+	    overflow: auto;
+        }
+        .filter-name {
+            display: none;
+        }
+        .filter-name.open {
+            display: inline;
+        }
+        .filter-icon {
+            display: inline-block;
+            width: 62px;
+		text-align: center;
+		flex-shrink: 0;
+		position: relative;
+		left: 2px;
+        }
+        .filters-container ul {
+            margin: 0px;
+            padding: 0px;
+            padding-top: 8px;
+        }
+        .filters-container ul li {
+            list-style-type: none;
+            position: relative;
+        }
+
+        .filters-container.open {
+            width: 216px;
+        }
+.filter-item-head {
+	height: 26px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	cursor: pointer;
+}
+.filter-item-wrapper {
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0px;
+}
+.filter-item-wrapper.open .filter-item-body {
+	padding: 8px 8px;
+	background: #fafafa;
+	border-top: 1px solid #B4B3FF;
+	margin-top: 4px;
+}
+.filter-item-body {
+	height: 0px;
+	overflow: hidden;
+	
+}
+.filter-item-wrapper.open .filter-item-body {
+	height: auto;
+}
+.filters-container .arrow {
+	display: none;
+    transform: rotate(-90deg);
+    margin-left: auto;
+    margin-right: 8px;
+}
+.filters-container.open .arrow {
+	display: inline-block;
+}
+.filter-item-wrapper.open .arrow {
+	transform: rotate(90deg);
+}
+.filters-heading {
+	display: none;
+	text-align: center;
+	margin-top: 20px;
+}
+
+        /* filter styles end */
+
+
+        /* page content styles start */
+        #page-content {
+            display: flex;
+        }
+        #page-content .content-col {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            justify-content: start;
+            flex-basis: 0;
+            padding-top: 12px;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* page content styles end */
+
+        /* card head styles start*/
+        .card-wrapper {
+            display: inline-block;
+            text-align: center;
+	    width:70%;
+        }
+        .total-head-count-card {
+            
+        }
+        .card-head {
+            color: #fff;
+	    font-weight:bold;
+            padding: 1px 8px;
+            text-align: center;
+            margin: -4px 8px;
+            position: relative;
+            z-index: 1;
+	    border-radius: 2px;
+	    width:85%;
+	    margin-left:auto;
+	    margin-right:auto;
+	    
+        }
+        .head-text {
+		font-size:16px;
+		
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+        } 
+        .card-body {
+		box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
+		padding: 34px 48px 2px 44px;
+		position: relative;
+		top: -30px;
+		background-color: #fff;
+		border-radius: 8px;
+		box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+}
+.card-body .val-row:first-child {
+	margin-top: 6px;
+}
+
+	.val-text{
+		font-size:12px;
+		font-weight:bold;
+		color:#4F4F4F;
+		line-height: 18px;
+	}
+        .val-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 3px 0px 2px 0px;
+        }
+        .val-row:last-child {
+            border-bottom: 0px;
+        }
+        .head-value {
+            font-size: 24px;
+            position: relative;
+	    
+        }
+        .head-value .icon {
+            position: absolute;
+            right: -1px;
+            
+        }
+        .head-value .icon svg {
+            height: 25px;
+            width: 25px;
+            fill: #fff;
+        }
+        .val {
+            display: flex;
+	    font-size:14px;
+	    
+	    font-weight:bold;
+        }
+        .val-arrow {
+            display: flex;
+        }
+        .val-arrow svg {
+            height: 16px;
+            width: 16px;
+            fill: rgb(150, 150, 5);
+        }
+        .val-arrow.down svg {
+            transform: rotate(180deg);
+            fill: saddlebrown;
+        }
+        /* card head styles end*/
+
+/*Colors starts here*/
+
+.totalHeadcountColor{
+
+background:linear-gradient(to top, #60C8C8, #52CBBE);
+
+}
+
+.newHiresOnboarded{
+
+background:linear-gradient(to top, #91A0A0, #5D7373);
+
+}
+
+.openPositions{
+
+background:linear-gradient(to top, #00A0A8, #167D82);
+
+}
+
+.annualizedAttrition{
+
+background:linear-gradient(to top, #4CA6EA, #2EA4FD);
+
+}
+
+/*Colors end here*/
+
+
+/* pyramid styles start */
+.head-count-pyramid {
+    width: 100%;
+    text-align: center;
+}
+.pyramid-wrapper {
+    
+    margin-top: -20px;
+}
+.ops-pyramid-wrapper {
+	margin-top: -4px;
+}
+.attr-pyramid-wrapper {
+	margin-top: -20px;
+}
+.pyramid-bar {
+    width: 200px;
+    background-color: blue;
+    margin: 2px 8px;
+}
+
+.pyramid-bar-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+align-items: center;
+}
+.pyramid-bar-wrapper .left-val, .pyramid-bar-wrapper .right-val {
+    width: 60px;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.pyramid-values-wrapper {
+    text-align:center;
+    margin-left:10px;
+    margin-right:10px;
+    background:#fff;
+       box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    padding: 28px 25px 16px 25px;
+    border-radius: 8px;
+    
+}
+.hc-pyramid-values-wrapper {
+	padding-top: 39px;
+	padding-bottom: 23px;
+}
+.pyramid-heading {
+    padding: 8px 55px;
+    
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    top: 16px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.pyramid-legendSpace{
+
+margin-top:10px;
+
+}
+
+/* pyramid bar colors starts */
+
+.grade101{
+	
+	background: linear-gradient(to right, #949EA2, #5A717A);
+
+}
+
+.grade108{
+	
+	background: linear-gradient(to right, #93B8D7, #72c3f3);
+
+}
+
+.grade111{
+	
+	background: linear-gradient(to right, #CFC2F3, #A58EE8);
+
+}
+
+.grade112{
+	
+	background: linear-gradient(to right, #F9EEBC, #f8e487);
+
+}
+
+.grade116{
+	background-color:#F5893A;
+	background: linear-gradient(to right, #F3B78A, #F5893A);
+
+
+}
+
+
+
+.pyramid-title-color{
+
+background-color:#788B92;
+
+}
+
+.pyramid-values-wrapper-aattrition{
+
+	padding-top:34px;
+	padding-bottom:28px;
+
+}
+/* pyramid bar colors end */
+
+/* pyramid styles end */
+
+/*new hires sum start*/
+.sum-new-hires-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+	margin: 0px 12px;
+	margin-top:-5px;
+    background:#fff;
+       box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    padding: 13px 0px;
+    border-radius: 8px;
+}
+.add-newhires, .bcfill-newhires, .total-newhires {
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+	background: black;
+	display: flex;
+	color: #fff;
+	align-items: center;
+	justify-content: center;
+}
+.add-newhires-container, .bcfill-newhires-container, .total-newhires-container {
+	text-align: center;
+}
+
+.plusSign {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.equalSign {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.sum-dashed-container {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dashed blue;
+    padding: 13px;
+    border-radius: 8px;
+}
+/*new hires sum end*/ 
+
+/*background colors start*/
+
+.bgTitleGreen{
+
+background-color:rgb(82,203,190);
+
+}
+
+.bgTitlePerple{
+
+background-color:rgb(158,108,214);
+
+}
+
+.bgTitlelightblue{
+
+background-color:rgb(0,176,240);
+
+}
+
+
+/*background colors end*/
+
+/* location metrics */
+.width-helper {
+	width: 100%;
+}
+.location-metric-container {
+    margin-top: -20px;
+    text-align: center;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+.location-metric-heading {
+    padding: 8px 55px;
+    background: linear-gradient(to top, #458E8E, #00A0A0);
+    border-radius: 4px;
+    display: inline-block;
+    
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+}
+
+
+.location-metric-wrapper {
+     display: flex;
+    background:#fff;
+    padding-top: 25px;
+    padding-bottom: 17px;
+    justify-content: center;
+    box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    border-radius: 8px;
+position: relative;
+    top: -16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+}
+.location-metric-wrapper .location-metric-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.location-metric-container .circle {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.location-metric-container .circle-arrow{
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 12px solid #000;
+    position: relative;
+    top: -2px;
+}
+.loc1Border+.circle-arrow {
+    border-top-color: rgb(59, 74, 80);
+}
+.loc2Border+.circle-arrow {
+    border-top-color: rgb(251,84,81);
+}
+.loc3Border+.circle-arrow {
+    border-top-color: rgb(2, 179, 186);
+}
+.loc4Border+.circle-arrow {
+    border-top-color: rgb(248, 136, 39);
+}
+
+.location-metric-container .rectanle-wrapper {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.location-metric-container .rectanle-wrapper .rectangle {
+   
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight:bold;
+}
+.loc1Bg {
+    background-color: rgb(59, 74, 80);
+}
+.loc2Bg {
+    background-color: rgb(251,84,81);
+}
+.loc3Bg {
+    background-color: rgb(2, 179, 186);
+}
+.loc4Bg {
+    background-color: rgb(248, 136, 39);
+}
+.loc1Border {
+    border: 2px solid rgb(59, 74, 80);
+}
+.loc2Border {
+    border: 2px solid rgb(251,84,81);
+}
+.loc3Border {
+    border: 2px solid rgb(2, 179, 186);
+}
+.loc4Border {
+    border: 2px solid rgb(248, 136, 39);
+}
+/* location metrics end */
+
+/* New Hire Font size start*/
+
+.newHireFonts{
+margin-top:8px;
+font-weight:bold;
+
+}
+
+/* New Hire Font size end*/
+
+
+/*tenure styles start*/
+.tenure-headings {
+	display: flex;
+    position: relative;
+z-index: 1;
+}
+.tenure-heading1, .tenure-heading2 {
+	flex-basis: 0;
+	flex-grow: 1;
+	text-align: center;
+	border-radius: 4px;
+	display: inline-block;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+}
+.displayInlineBlock {
+display: inline-block;
+}
+.tenure-headings span {
+	padding: 8px 12px;
+	border-radius: 4px;
+}
+
+
+
+.tenure-container {
+    margin-top: -6px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.tnure-body {
+    display: flex;
+    background: #fff;
+    padding-top: 25px;
+    padding-bottom: 17px;
+    justify-content: center;
+    box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    border-radius: 8px;
+    position: relative;
+    top: -16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+}
+.tenure-bar-container, .diversity-container {
+flex-basis: 0;
+flex-grow: 1;
+flex-shrink: 1;
+}
+.tenure-bar-container {
+    display: flex;
+}
+.vertical-axes {
+	width: 1px;
+	background: #000;
+}
+.tenure-bar-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.tenure-bar-item {
+	display: flex;
+	margin-bottom: 4px;
+	width: 100%;
+}
+.tenure-bar-item:last-child {
+	margin: 0px;
+}
+.tenure-bar-item:first-child {
+	margin-top: 0px;
+}
+
+.tenure-title-color{
+
+background-color: rgb(78,96,122);
+
+}
+
+.divercity-title-color{
+
+background-color: #24AAC4;
+
+}
+.tenurebar {
+
+margin-right: 4px;
+background-color: black;
+}
+
+.tennure-legend{
+
+	margin-top:12px;
+
+}
+
+.diversity-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.diversity-img-container {
+	position: relative;
+    width: 47px;
+    height: 80px;
+	position: relative;
+	overflow: hidden;
+}
+.diversity-img-container img {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.diversity-img-bg {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	
+	height: 0%;
+}
+
+.divercity-background-female{
+
+background-color:#F880DD;
+
+}
+
+.divercity-background-male{
+
+background-color:#3CC2F3;
+
+}
+
+.tenure-bar-color1{
+
+background:linear-gradient(to right, #F9AB6A, #F58223);
+
+}
+
+.tenure-bar-color2{
+
+background:linear-gradient(to right, #B1C1C1, #5D7373);
+
+}
+
+.tenure-bar-color3{
+
+background:linear-gradient(to right, #F9DC84, #FFC000);
+
+}
+
+.tenure-bar-color4{
+
+background:linear-gradient(to right, #8FD3CC, #52CBBE);
+
+}
+
+.tenure-bar-color5{
+
+background:linear-gradient(to right, #FCA1AA, #FF5969);
+
+}
+
+.tenure-bar-color6{
+
+background:linear-gradient(to right, #C4B4E3, #9769EE);
+
+}
+
+.tenure-bar-color7{
+
+background:linear-gradient(to right, #6A9EA0, #00A0A8);
+
+}
+
+.tenure-bar-color8{
+
+background:linear-gradient(to right, #F2A76A, #F58223);
+
+}
+
+/*tenure styles end*/
+
+.flex60 {
+	flex-grow: 0.6;
+}
+.flex40 {
+	flex-grow: 0.4;
+}
+
+
+/* acceptance styles start*/
+.acceptance-bar-wrapper {
+    justify-content: center;
+    align-items: center;
+}
+.acceptance-bar-container {
+	display: flex;
+	height: fit-content;
+	width: 100%;
+}
+.acceptance-bar-wrapper {
+	
+}
+.acceptance-bar-wrapper .acceptancebar {
+
+}
+.horizotal-axes {
+ 
+}
+
+.acceptance-card-container{
+
+margin-top:17px;
+
+}
+
+.acceptance-card-container .tnure-body{
+
+padding-top:48px;
+padding-bottom:40px;
+}
+
+.acceptance-title-background{
+	background:#3EA5F5;
+
+}
+/* Total Open Positions styles start*/
+
+/* acceptance styles end*/
+.totalOpenPositions-card-container{
+
+margin-top:14px;
+
+}
+
+.totalOpenPositions-card-container .sum-new-hires-wrapper{
+padding-top:38px;
+padding-bottom:42px;
+
+}
+
+/* Total Open Positions styles end*/
+
+/* Attrition styles start*/
+.diversity-attr-body {
+    display: flex;
+    background: #fff;
+    padding-top: 25px;
+    padding-bottom: 17px;
+    justify-content: center;
+    box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+    border-radius: 8px;
+    position: relative;
+    top: -16px;
+    padding-left: 8px;
+    padding-right: 8px;
+ }
+
+ .div-attr-wrapper {
+    margin-top: -20px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+ }
+ .diversity-attr-heading {
+    padding: 8px 55px;
+    
+    border-radius: 4px;
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 1;
+    position: relative;
+ }
+
+.diversity-attrition-container{
+
+	margin-top:14px;
+
+}
+
+.diversity-attrition-container .diversity-attr-body{
+
+padding-top:47px;
+padding-bottom:42px;	
+
+}
+
+#femaleAttrVal{
+
+	margin-right:10px;
+
+}
+
+
+#maleAttrVal{
+
+	margin-left:10px;
+
+}
+
+/* Attrition styles end*/
+
+
+/* source mix styles start */
+    .source-mix-container {
+        margin-top: -4px;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .source-mix-body {
+        background: #fff;
+        padding-top: 25px;
+        padding-bottom: 16px;
+        justify-content: center;
+        box-shadow: rgb(204, 204, 204) 0px 2px 8px 0px, rgb(204, 204, 204) 0px 2px 6px 0px;
+        border-radius: 8px;
+        position: relative;
+        top: -16px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .source-mix-heading {
+        padding: 8px 55px;
+        background: linear-gradient(to top, #3A6381, #12344D);
+        border-radius: 4px;
+        display: inline-block;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 1;
+        position: relative;
+    }
+    .source-mix-bar-container {
+        padding: 2px 0px;
+	background-color: black;
+	height: 10px;
+	margin-right: 2px;
+    }
+    .source-mix-row {
+        display: flex;
+	align-items: center;
+    }
+    .source-mix-axes {
+        flex: 0;
+	background-color: blue;
+	margin-left: 4px;
+    }
+    .source-mix-label {
+        flex: 0;
+        white-space: nowrap;
+	margin-bottom: 3px;
+	width: 90px;
+	flex-basis: auto;
+	text-align: right;
+    }
+    .source-mix-val {
+        flex: 0;
+	font-weight: bold;
+	color:rgb(79, 79, 79);
+	font-size:12px;
+	
+    }
+    .source-mix-bar {
+        background-color: #000;
+        height: 100%;
+    }
+    .displayNone {
+        display: none;
+    }
+    /* source mix end */
+
+.flexWrap{
+
+flex-wrap:wrap;
+
+}
+
+.width100percent{
+
+	width:100%;
+}
+
+.menu-container li {
+	
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="hamburger-container">
+                <div id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="logo-container">
+                <img src="90aceb9377ed450da91cdc1e1d743003.png" style="border: 0; width: 140px; height: 44px;"/>
+            </div>
+            <div class="page-title-container">
+                HR People Infographics Dashboard - <SpotfireControl id="e99d699590d24ec5a0aa96600cf38431" />
+            </div>
+            <div class="filter-icon-container">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.6724;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st1 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+
+                        .st2 {
+                            fill: none;
+                            stroke: #000000;
+                            stroke-width: 1.5;
+                            stroke-linejoin: round;
+                            stroke-miterlimit: 10;
+                        }
+                    </style>
+                    <g>
+                        <g>
+                            <g>
+                                <path
+                                    d="M22.2,1.5l-8.5,11.2c-0.2,0.3-0.3,0.6-0.3,0.9v7.8l-2.7,0.8v-8.6c0-0.3-0.1-0.6-0.3-0.9L1.8,1.5H22.2 M22.8,0H1.2     c-1,0-1.5,1.1-0.9,1.9l8.9,11.8v9.6c0,0.4,0.3,0.7,0.7,0.7c0.1,0,0.1,0,0.2,0l4.3-1.3c0.3-0.1,0.5-0.4,0.5-0.7v-8.3l8.9-11.8     C24.3,1.1,23.8,0,22.8,0L22.8,0z"
+                                    fill="#fff" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </header>
+        <main>
+            <div id="menu-container" class="menu-container">
+                <ul>
+                    <li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 2" id="Layer_2" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#101820;}</style></defs><title/><path  class="cls-1" fill="#4a4a4a" d="M30,15a1,1,0,0,1-.58-.19L16,5.23,2.58,14.81a1,1,0,0,1-1.16-1.62l14-10a1,1,0,0,1,1.16,0l14,10A1,1,0,0,1,30,15Z"/><path  class="cls-1" fill="#4a4a4a" d="M5,9A1,1,0,0,1,4,8V4A1,1,0,0,1,5,3H9A1,1,0,0,1,9,5H6V8A1,1,0,0,1,5,9Z"/><path class="cls-1" fill="#4a4a4a" d="M25,29H20a1,1,0,0,1-1-1V21H13v7a1,1,0,0,1-1,1H7a3,3,0,0,1-3-3V16a1,1,0,0,1,2,0V26a1,1,0,0,0,1,1h4V20a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1v7h4a1,1,0,0,0,1-1V16a1,1,0,0,1,2,0V26A3,3,0,0,1,25,29Z"/></svg>
+                        </span>
+                        <span class="menu-name">Home</span>
+                    </li>
+
+		 <li id="hc-navlink" class="navi-button">
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Icons_Users" overflow="hidden" version="1.1" viewBox="0 0 96 96"><g><circle fill="#4a4a4a" cx="24" cy="30.8" r="9"/><circle fill="#4a4a4a" cx="72" cy="30.8" r="9"/><path fill="#4a4a4a" d=" M 66 74.2 L 66 65.2 C 66 63.8 65.4 62.4 64.2 61.6 C 61.8 59.6 58.6 58.2 55.4 57.4 C 53.2 56.8 50.6 56.2 48 56.2 C 45.6 56.2 43 56.6 40.6 57.4 C 37.4 58.2 34.4 59.8 31.8 61.6 C 30.6 62.6 30 63.8 30 65.2 L 30 74.2 L 66 74.2 Z"/><circle fill="#4a4a4a" cx="48" cy="44.8" r="9"/><path fill="#4a4a4a" d=" M 88.2 47.6 C 85.8 45.6 82.6 44.2 79.4 43.4 C 77.2 42.8 74.6 42.2 72 42.2 C 69.6 42.2 67 42.6 64.6 43.4 C 63.4 43.8 62.2 44.2 61 44.8 L 61 45 C 61 48.4 59.6 51.6 57.4 53.8 C 61.2 55 64.2 56.6 66.6 58.4 C 67.2 59 67.8 59.4 68.2 60.2 L 90 60.2 L 90 51.2 C 90 49.8 89.4 48.4 88.2 47.6 Z"/><path fill="#4a4a4a" d=" M 29.4 58.4 L 29.4 58.4 C 32.2 56.4 35.4 54.8 38.6 53.8 C 36.4 51.4 35 48.4 35 45 C 35 44.8 35 44.8 35 44.6 C 33.8 44.2 32.6 43.6 31.4 43.4 C 29.2 42.8 26.6 42.2 24 42.2 C 21.6 42.2 19 42.6 16.6 43.4 C 13.4 44.4 10.4 45.8 7.8 47.6 C 6.6 48.4 6 49.8 6 51.2 L 6 60.2 L 27.6 60.2 C 28.2 59.4 28.6 59 29.4 58.4 Z"/></g></svg>
+                        </span>
+			<!-- Total HC Navgation-->
+                        <span class="menu-name"> Total Head Count</span>
+			<div id="sf-hc-navlink" class="displayNone"><SpotfireControl id="0b1d4652ab5b49098f84df3e2e2f9dd1" /></div>
+                    </li>
+ <li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 24 24" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve"><g><path  fill="#4a4a4a" d="M10,9c0-1.7,1.3-3,3-3s3,1.3,3,3c0,1.7-1.3,3-3,3S10,10.7,10,9z M13,14c-4.6,0-6,3.3-6,3.3V19h12v-1.7   C19,17.3,17.6,14,13,14z"/></g><g><g><circle fill="#4a4a4a" cx="19.5" cy="8.5" r="2.5"/></g><g><path fill="#4a4a4a" d="M19.5,13c-1.2,0-2.1,0.3-2.8,0.8c2.3,1.1,3.2,3,3.2,3.2l0,0.1H24v-1.3C24,15.7,22.9,13,19.5,13z"/></g></g><line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="5" x2="5" y1="8" y2="16"/><line fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="2" x1="9" x2="1" y1="12" y2="12"/></svg>
+                        </span>
+			<!-- All New Hire Onboard Navgation-->
+                        <span class="menu-name"><SpotfireControl id="a425bdd1efd74f51946a8ce097c8709e" /></span>
+                    </li>
+ <li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 24 24"  id="Layer_1" version="1.1" viewBox="0 0 24 24"  xml:space="preserve"><path fill="#4a4a4a" d="M21,6h-2V4c0-2.2-1.8-4-4-4H9C6.8,0,5,1.8,5,4v2H3C2.4,6,2,6.4,2,7v1c0,0.6,0.4,1,1,1v8c0,0.6,0.4,1,1,1h6v3H8  c-0.6,0-1,0.4-1,1v2h10v-2c0-0.6-0.4-1-1-1h-2v-3h6c0.6,0,1-0.4,1-1V9c0.6,0,1-0.4,1-1V7C22,6.4,21.6,6,21,6z M7,4c0-1.1,0.9-2,2-2  h6c1.1,0,2,0.9,2,2v8H7V4z M3,8V7h2v5H4V8H3z M16,22v1H8v-1H16z M13,21h-2v-3h2V21z M19,16H5v-2h14V16z M21,8h-1v4h-1V7h2V8z"/></svg>
+                        </span>
+			<!-- Total Open Posistions Navgation-->
+                        <span class="menu-name"><SpotfireControl id="28efe1aef15448e98c3fd769ba579a7c" /></span>
+                    </li>
+			<li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512"  xml:space="preserve"><g id="C_-_89_x2C__Dismissal_x2C__employee_x2C__exit_x2C__job_x2C__layoff_x2C__person_x2C__personal"><g><path fill="#4a4a4a" d="M165.664,158.22c30.4,0,55.133-24.125,55.133-53.78c0-29.653-24.733-53.777-55.133-53.777    c-30.397,0-55.126,24.124-55.126,53.777C110.537,134.094,135.267,158.22,165.664,158.22z"/><path fill="#4a4a4a" d="M106.67,304.561h117.994v-34.315c0-2.588,2.098-4.686,4.686-4.686c2.587,0,4.686,2.098,4.686,4.686v34.315h29.813v-55.395    c0-23.431-19.16-42.494-42.711-42.494H110.668c-23.812,0-43.184,19.273-43.184,42.962v54.926h29.815v-34.315    c0-2.588,2.098-4.686,4.686-4.686s4.686,2.098,4.686,4.686V304.561z M165.664,231.601c5.412,0,9.797,4.369,9.797,9.752    c0,5.384-4.385,9.753-9.797,9.753c-5.407,0-9.791-4.369-9.791-9.753C155.873,235.97,160.257,231.601,165.664,231.601z     M165.664,260.239c5.412,0,9.797,4.365,9.797,9.748c0,5.388-4.385,9.751-9.797,9.751c-5.407,0-9.791-4.363-9.791-9.751    C155.873,264.604,160.257,260.239,165.664,260.239z"/><path fill="#4a4a4a" d="M439.83,41.674H263.49c-2.588,0-4.686,2.098-4.686,4.686c0,2.588,2.098,4.686,4.686,4.686h171.654v370.522H263.49    c-2.588,0-4.686,2.098-4.686,4.686s2.098,4.686,4.686,4.686h171.654v30.017h-210.48V313.932H106.67v156.395h54.308V357.999    c0-2.588,2.098-4.686,4.686-4.686s4.686,2.098,4.686,4.686v112.327h53.957h0.358H439.83c2.588,0,4.686-2.098,4.686-4.686V46.359    C444.516,43.771,442.418,41.674,439.83,41.674z"/><path fill="#4a4a4a" d="M361.816,270.245c0,13.337,10.891,24.187,24.275,24.187c13.389,0,24.281-10.85,24.281-24.187    c0-13.337-10.893-24.187-24.281-24.187C372.707,246.058,361.816,256.908,361.816,270.245z"/><path fill="#4a4a4a" d="M263.848,143.484c0,2.588,2.099,4.686,4.686,4.686h106.209l-11.546,11.493c-1.834,1.826-1.841,4.792-0.016,6.626    c0.916,0.919,2.118,1.38,3.321,1.38c1.195,0,2.391-0.455,3.305-1.364l19.59-19.5c0.001-0.001,0.002-0.003,0.004-0.005    c0.002-0.002,0.004-0.004,0.008-0.007c0.002-0.002,0.003-0.002,0.004-0.003c0.035-0.036,0.059-0.077,0.092-0.114    c0.174-0.185,0.34-0.377,0.48-0.588c0.007-0.008,0.014-0.017,0.02-0.025c0.075-0.115,0.127-0.241,0.191-0.361    c0.075-0.139,0.16-0.272,0.222-0.42c0.005-0.011,0.011-0.022,0.016-0.034c0.061-0.148,0.093-0.305,0.136-0.458    c0.038-0.128,0.088-0.251,0.115-0.383c0.002-0.009,0.004-0.018,0.006-0.028c0.03-0.153,0.031-0.309,0.046-0.464    c0.013-0.143,0.04-0.284,0.042-0.427c0-0.001,0-0.002,0-0.004s0-0.003,0-0.004c-0.002-0.143-0.029-0.284-0.042-0.427    c-0.015-0.154-0.016-0.311-0.046-0.464c-0.002-0.01-0.004-0.019-0.006-0.028c-0.027-0.132-0.077-0.254-0.115-0.382    c-0.043-0.153-0.075-0.31-0.136-0.458c-0.005-0.012-0.011-0.022-0.016-0.034c-0.062-0.147-0.146-0.281-0.222-0.42    c-0.064-0.12-0.116-0.245-0.191-0.361c-0.006-0.009-0.013-0.017-0.02-0.025c-0.141-0.211-0.307-0.403-0.48-0.588    c-0.033-0.037-0.057-0.078-0.092-0.114c-0.001,0-0.002-0.001-0.004-0.003c-0.004-0.003-0.006-0.004-0.008-0.007    c-0.002-0.002-0.003-0.004-0.004-0.004l-19.59-19.5c-1.834-1.825-4.799-1.819-6.626,0.016c-1.825,1.834-1.818,4.801,0.016,6.626    l11.546,11.493H268.533C265.946,138.799,263.848,140.896,263.848,143.484z"/></g></g><g id="Layer_1"/></svg>
+                        </span>
+			<!-- Attrition Turnover Navgation-->
+                        <span class="menu-name"><SpotfireControl id="1118400089754a2488f4b91b71631175" /></span>
+                    </li>
+
+<li>
+                        <span class="menu-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve"><g><g><path d="M32.331,46.326c-1.753,0-3.278-0.711-4.32-2.024c-0.971-1.222-1.384-2.833-1.135-4.421l1.196-7.618    l-0.276,0.142c-1.383,0.711-3.081,0.166-3.792-1.217c-0.711-1.383-0.166-3.081,1.217-3.792l5.205-2.676    c0.943-0.485,2.078-0.399,2.937,0.222c0.859,0.621,1.297,1.672,1.132,2.719L32.45,40.685c0.41-0.043,1.467-0.301,3.435-1.668    c1.277-0.888,3.032-0.572,3.919,0.705c0.888,1.277,0.572,3.032-0.705,3.919c-2.459,1.71-4.568,2.585-6.446,2.677    C32.545,46.324,32.437,46.326,32.331,46.326z" style="fill:#515151;"/></g><g><circle cx="32.803" cy="19.233" r="3.143" style="fill:#515151;"/></g><g><g><path d="M32,59.5C16.836,59.5,4.5,47.164,4.5,32S16.836,4.5,32,4.5S59.5,16.837,59.5,32     S47.163,59.5,32,59.5z M32,10.132c-12.058,0-21.868,9.81-21.868,21.868S19.942,53.868,32,53.868     c12.058,0,21.868-9.81,21.868-21.868S44.058,10.132,32,10.132z" style="fill:#515151;"/></g></g></g></svg>
+                        </span>
+			<!-- Glossary Navgation-->
+                        <span class="menu-name"><SpotfireControl id="99cddf9421784122b746d01c951e29e5" /></span>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="page-content">
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head totalHeadcountColor">
+                            <div class="head-text">Total Headcount</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="23d1547e86974c0c88c81d59f6c61021" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="a04dcd1315494e248e7560b1d1ea413e" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="41220175f38446b18c3907b60c7fe627" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="37d29f779d5241deb660419b08cfb0d9" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="af8d66c7c62c4125850123df7c3d43c7" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="347326fca1764153ba83d712ad5f14e7" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+ <!-- location metrics start -->
+<div class="width-helper">
+                <div class="location-metric-container">
+                    <div class="location-metric-heading">Location split</div>
+                    <div class="location-metric-wrapper">
+                    <div class="location-metric-item">
+                            <div class="circle loc1Border">
+				<SpotfireControl id="3c6f6214cb944ad59d9ee2185acf5de6" />
+			    </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc1Bg">
+				Bangalore
+			    </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc2Border">
+				<SpotfireControl id="ede42622a1a94de59b9720129dcabac0" />
+			   </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc2Bg">
+				Pune
+			</div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc3Border">
+				<SpotfireControl id="f9ca8fdb97b44127a8ef9b9e61a9ad35" />
+			</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc3Bg">
+				Mumbai
+			  </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc4Border">
+				<SpotfireControl id="673c70a03125432da1d45e40fd18e062" />
+				</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc4Bg">
+				Chennai
+			 </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+</div>
+                <!-- location metrics end -->
+
+<!-- tenure start -->
+<div class="width-helper">
+	<div class="tenure-container">
+	<div class="tenure-headings">
+		<div class="tenure-heading1 flex60">
+		
+		<span class="displayInlineBlock tenure-title-color">Tenure Range(Years)</span>
+		</div>
+		<div class="tenure-heading2 flex40"><span class="displayInlineBlock divercity-title-color">Diversity Mix</span></div>
+	</div>
+<div class="tnure-body">
+<div class="tenure-bar-container flexWrap flex60">
+<div class="acceptance-bar-container">
+<div class="vertical-axes">&nbsp;
+</div>
+<div class="tenure-bar-wrapper">
+	<div id="tenure16" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color6">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="96d644e1c24d489698afff3d8e0c152f" /></div>
+	</div>
+	<div id="tenure11" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color5">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="d3b89dd138ff43388a70ad11c979d44d" /></div>
+	</div>
+	<div id="tenure6" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color4">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="adfcc1fc5548441687d369d7d0d73979" /></div>
+	</div>
+	<div id="tenure3" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color3">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="494fd22cdff2455483d5f42a35263a07" /></div>
+	</div>
+	<div id="tenure1" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color2">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="9effc893bc9d48dcbe45551d80f19c29" /></div>
+	</div>
+	<div id="tenure0" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color1">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="6c1e09de87e74fd69133c97e130e90f2" /></div>
+		
+	</div>
+
+
+	
+</div>
+</div>
+<div class="tennure-legend width100percent">
+<SpotfireControl id="3311b29610634db991082c7fdaa160ff" /> <1
+<SpotfireControl id="74dc9854beb147309bc2ac0b75048fc1" /> 1 -2
+<SpotfireControl id="9d45dafa8dc9470795e3b6ae09137f9f" /> 3 - 5
+<SpotfireControl id="46b5c0bba5c340b98cfd079b7428a16b" /> 6 - 10
+<SpotfireControl id="e3aefc75c5ef4655a94b3715cb39f1d3" /> 11 - 15
+<SpotfireControl id="f34d0e8cfed04bc085115764e6273623" />16+
+
+</div>
+</div>
+
+<div class="diversity-container flex40">
+	<div id="femaleTenureVal" class="diversity-item">
+		<div class="diversity-img-container">
+			<div class="diversity-img-bg divercity-background-female">&nbsp;</div>
+			<img src="25cd4480caa34fd88460a4e70e543fba.png" style="border: 0; width: 47px; height: 80px;"/>
+		</div>
+		<div class="diver-val">
+			<SpotfireControl id="c8338f62b82042c5b170eb180dd6c745" />
+		</div>
+	</div>
+
+	<div id="maleTenureVal" class="diversity-item">
+		<div class="diversity-img-container">
+			<div class="diversity-img-bg divercity-background-male">&nbsp;</div>
+			<img src="b1d3f65509134525b8706d6a1d75b30b.png" style="border: 0; width: 47px; height: 80px;"/>
+		</div>
+		<div class="diver-val">
+			<SpotfireControl id="bb1fe31281de4e9a8da08805473eb3bd" />
+		</div>
+	</div>
+	
+</div>
+</div>
+	</div>
+</div>
+<!-- tenure end -->
+
+<!--head count pyramid starts -->
+<div class="width-helper">
+ <div class="head-count-pyramid">
+                        <div class="pyramid-wrapper">
+                            <div class="pyramid-heading pyramid-title-color">
+                                Headcount Pyramid
+                            </div>
+                            <div class="pyramid-values-wrapper hc-pyramid-values-wrapper">
+                                <div id="grade116" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="ccf69d63cf324912a47a6213a9078739" /></div>
+                                    <div class="pyramid-bar grade116">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="565b2bd385f14da1a4b4b2be932e3847" /></div>
+                                </div>
+                                <div id="grade112" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="d9aa8c08dd7148eaa7e13940a7e68b98" /></div>
+                                    <div class="pyramid-bar grade112">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="a7ae565ea05742f28776fc9e0aa5d714" /></div>
+                                </div>
+                                <div id="grade111" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="0cdf8bd88e4c4f7fbd5bd7c9b7f9cbaa" /></div>
+                                    <div class="pyramid-bar grade111">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="81e608c9f73e4927a3092d7094bf6c86" /></div>
+                                </div>
+                                <div id="grade108" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="2d95f0c334684469ae37ec130bbdb3e6" /></div>
+                                    <div class="pyramid-bar grade108">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="3319fd324adb4d04a57363b4380781bf" /></div>
+                                </div>
+                                <div id="grade101" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="e7ec3c0017054778a7a5e505f58d4be4" /></div>
+                                    <div class="pyramid-bar grade101">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="f65a383636094e99b148f2f717cee411" /></div>
+                                </div>
+				<div class="pyramid-legendSpace">
+				<SpotfireControl id="468aff72038f41439490fbb24e0469c4" />101 - 108 
+				<SpotfireControl id="956892e8162e4ffcbe6a9878240eddf4" />109 - 110
+				<SpotfireControl id="4b92614d61394981806878fddfa4cefc" />111 - 112
+				<SpotfireControl id="a43ff0df803743a8b76dad037d61c7a2" />113 - 115
+				<SpotfireControl id="dafff78a50164d33a66a164ead7c1b28" />116+
+
+			   </div>
+                            </div>
+			   
+                        </div>
+                    </div>
+</div>
+<!--head count pyramid end -->
+
+
+
+                </div>
+
+                <div class="content-col">
+<!--new hires onboarded start -->
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head newHiresOnboarded">
+                            <div class="head-text">New Hires Onboarded</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="12723fad09ef40788ef00b02bc2ce0d0" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="51dc2bffe17447079a19da105f2855c3" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="ab2179bf03e44c3c90a2f3c9acd70c98" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="f428768582444a448fb85d6c6adc3346" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="e6f80466044d486685047150a6863742" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="8ceccf3f16534a478a33f9685e9d8eb6" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+<!-- new hires onbarded end-->
+
+<!--new hires addition start -->
+	<div class="width-helper">
+		<div class="sum-new-hires-wrapper">
+<div class="sum-dashed-container">
+		<div class="add-newhires-container">
+			<div class="add-newhires bgTitleGreen">
+				<SpotfireControl id="b78556f34b694a15add469c456a0135c" />
+			</div>
+			<div class="newHireFonts">Addition</div>
+		</div>
+		<div class="plusSign">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 36 36;" version="1.1" height="20px" width="20px" viewBox="0 0 36 36" xml:space="preserve"><style type="text/css">
+	.st0{fill:#9a9a9a;stroke:#9a9a9a; stroke-width:3px}
+	
+</style><g id="Layer_1"/><g id="icons"><path fill="#9a9a9a" class="st0" d="M19.6,2h-3.2c-0.9,0-1.6,0.7-1.6,1.6v11.2H3.6c-0.9,0-1.6,0.7-1.6,1.6v3.2c0,0.9,0.7,1.6,1.6,1.6   h11.2v11.2c0,0.9,0.7,1.6,1.6,1.6h3.2c0.9,0,1.6-0.7,1.6-1.6V21.2h11.2c0.9,0,1.6-0.7,1.6-1.6v-3.2c0-0.9-0.7-1.6-1.6-1.6H21.2V3.6   C21.2,2.7,20.5,2,19.6,2z" id="add_1_"/></g></svg>
+               </div>
+		<div class="bcfill-newhires-container">
+			<div class="bcfill-newhires bgTitlePerple">
+				<SpotfireControl id="a283ded2c9ef48618c88756bc35a9b81" />
+			</div>
+			<div class="newHireFonts">Backfill</div>
+		</div>
+		<div class="equalSign">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64" height="20px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20px" xml:space="preserve"><path fill="#9a9a9a" d="M64,24.646c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V14.021c0-1.657,1.343-3,3-3h58c1.657,0,3,1.343,3,3V24.646z"/><path fill="#9a9a9a" d="M64,49.979c0,1.658-1.343,3-3,3H3c-1.657,0-3-1.342-3-3V39.354c0-1.656,1.343-3,3-3h58c1.657,0,3,1.344,3,3V49.979z"/></svg>
+		</div>
+		<div class="total-newhires-container">
+			<div class="total-newhires bgTitlelightblue">
+				<SpotfireControl id="cf922de6fe4f4bc4a26ed095f21a26c5" />
+			</div>
+			<div class="newHireFonts">Total</div>
+		</div>
+</div>
+</div>
+</div>
+<!--new hires addition end -->
+
+<!-- acceptance start -->
+<div class="width-helper acceptance-card-container">
+	<div class="tenure-container">
+	<div class="tenure-headings">
+		<div class="tenure-heading1 flex60">
+		<span class="displayInlineBlock acceptance-title-background">Acceptance Ratio</span>
+		</div>
+		<div class="tenure-heading2 flex40"><span class="displayInlineBlock divercity-title-color">Diversity Mix</span></div>
+	</div>
+<div class="tnure-body">
+<div class="tenure-bar-container flexWrap acceptance-bar-wrapper flex60">
+<div class="acceptance-bar-container">
+<div class="vertical-axes">&nbsp;
+</div>
+<div class="tenure-bar-wrapper">
+	<div id="acceptance" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color7">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="81030eab48b9410a9e7a979f0cdb9381" /></div>
+	</div>
+	<div id="decline" class="tenure-bar-item">
+		<div class="tenurebar tenure-bar-color8">&nbsp;</div>
+		<div class="tenureval"><SpotfireControl id="fb5aea4fe72c4321bad5fbf62f596657" /></div>
+	</div>
+	
+</div>
+</div>
+<div class="width100percent">
+
+<SpotfireControl id="d0650c5971ee4139821fd725acf58ee6" /> Offer Accepted 
+<SpotfireControl id="a9ceb1535e71426c86ad2f7eda1fea02" /> Offer Declined
+
+</div>
+</div>
+<div class="diversity-container flex40">
+	<div id="femaleNewhireVal" class="diversity-item">
+		<div class="diversity-img-container">
+			<div class="diversity-img-bg divercity-background-female">&nbsp;</div>
+			<img src="25cd4480caa34fd88460a4e70e543fba.png" style="border: 0; width: 47px; height: 80px;"/>
+		</div>
+		<div class="diver-val">
+			<SpotfireControl id="e9ef777122874df889a525979fab4254" />
+		</div>
+	</div>
+
+	<div id="maleNewhireVal" class="diversity-item">
+		<div class="diversity-img-container">
+			<div class="diversity-img-bg divercity-background-male">&nbsp;</div>
+			<img src="b1d3f65509134525b8706d6a1d75b30b.png" style="border: 0; width: 47px; height: 80px;"/>
+		</div>
+		<div class="diver-val">
+			<SpotfireControl id="fc450b3c791f4ce9b51b8ced5ca3e69c" />
+		</div>
+	</div>
+	
+</div>
+</div>
+	</div>
+</div>
+<!-- acceptance end -->
+
+<!-- source mix start -->
+                    <div class="width-helper">
+                        <div class="source-mix-container">
+                            <div class="source-mix-heading">Source Mix</div>
+                            <div class="source-mix-body">
+                            </div>
+			    <div id="srcmxSocialMedia" class="displayNone"><SpotfireControl id="10e0e39096f343689fd4bf4d9a83704e" /></div>
+                                <div id="srcmxDirect" class="displayNone"><SpotfireControl id="879e247e49aa4595810d69688d2bd310" /></div>
+                                <div id="srcmxReferal" class="displayNone"><SpotfireControl id="9330f1f78d904314b7ed2907213de32d" /></div>
+                                <div id="srcmxInternal" class="displayNone"><SpotfireControl id="f2cabbcefe534aab884c2df6aed08f6c" /></div>
+                                <div id="srcmxAgency" class="displayNone"><SpotfireControl id="9493a0daa1c04f9a9ba43b0f89a03349" /></div>
+                                <div id="srcmxColleag" class="displayNone"><SpotfireControl id="dd30a6bad43040a0918a875fc52fc041" /></div>
+                                <div id="srcmxTemp" class="displayNone"><SpotfireControl id="d7e2a4a3c2984accb9fec36581f3a618" /></div>
+                                <div id="srcmxFormer" class="displayNone"><SpotfireControl id="d70359a42b1e4a4bb721653984a1b110" /></div>
+			    </div>
+                    </div>
+                    <!-- source mix end -->
+
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head openPositions">
+                            <div class="head-text">Total Open Positions</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="cb7786a27b7d45269bf40b1bc0f0d4ed" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="df050e07caaf49b4868e429d9ef1869c" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="1dbf1df5fab742de91efbb60b373f18c" /></span>
+                                    <span class="val-arrow">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="db1180abc304465b85100b34dfda5fd5" /></span>
+                                    <span class="val-arrow">
+                                       
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="645e670b146d4869ad328ee403dfedb6" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="09a92e4a0e52440ba5f4667f6d101437" /></span>
+                                    <span class="val-arrow down">
+                                        
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+ <!-- location metrics start -->
+<div class="width-helper">
+                <div class="location-metric-container">
+                    <div class="location-metric-heading">Location split</div>
+                    <div class="location-metric-wrapper">
+                    <div class="location-metric-item">
+                            <div class="circle loc1Border">
+				<SpotfireControl id="d8b60942a16845b58c3ea09078ca62c5" />
+			    </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc1Bg">
+				Bangalore
+			    </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc2Border">
+				<SpotfireControl id="57076beec3294a619a5ce3d76ebc3c95" />
+			   </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc2Bg">
+				Pune
+			</div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc3Border">
+				<SpotfireControl id="7d8f18059e0e42b5b8f88cb307f4f7b2" />
+			</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc3Bg">
+				Mumbai
+			  </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc4Border">
+				<SpotfireControl id="44fef3ddc9204fc881ad15b15f0551cb" />
+				</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc4Bg">
+				Chennai
+			 </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+</div>
+                <!-- location metrics end -->
+
+<!-- total open positions sum start -->
+<div class="width-helper totalOpenPositions-card-container">
+<div class="sum-new-hires-wrapper">
+<div class="sum-dashed-container">
+		<div class="add-newhires-container">
+			<div class="add-newhires bgTitleGreen">
+				<SpotfireControl id="85aff1d89cb64d34a0d6ab00a6c8623b" />
+			</div>
+			<div class="newHireFonts">Addition</div>
+		</div>
+		<div class="plusSign">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 36 36;" version="1.1" height="20px" width="20px" viewBox="0 0 36 36" xml:space="preserve"><style type="text/css">
+	.st0{fill:#9a9a9a;stroke:#9a9a9a; stroke-width:3px}
+	
+</style><g id="Layer_1"/><g id="icons"><path fill="#9a9a9a" class="st0" d="M19.6,2h-3.2c-0.9,0-1.6,0.7-1.6,1.6v11.2H3.6c-0.9,0-1.6,0.7-1.6,1.6v3.2c0,0.9,0.7,1.6,1.6,1.6   h11.2v11.2c0,0.9,0.7,1.6,1.6,1.6h3.2c0.9,0,1.6-0.7,1.6-1.6V21.2h11.2c0.9,0,1.6-0.7,1.6-1.6v-3.2c0-0.9-0.7-1.6-1.6-1.6H21.2V3.6   C21.2,2.7,20.5,2,19.6,2z" id="add_1_"/></g></svg>
+               </div>
+		<div class="bcfill-newhires-container">
+			<div class="bcfill-newhires bgTitlePerple">
+				<SpotfireControl id="0ad493e609854905979c8b8a0759639c" />
+			</div>
+			<div class="newHireFonts">Backfill</div>
+		</div>
+		<div class="equalSign">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64" height="20px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="20px" xml:space="preserve"><path fill="#9a9a9a" d="M64,24.646c0,1.657-1.343,3-3,3H3c-1.657,0-3-1.343-3-3V14.021c0-1.657,1.343-3,3-3h58c1.657,0,3,1.343,3,3V24.646z"/><path fill="#9a9a9a" d="M64,49.979c0,1.658-1.343,3-3,3H3c-1.657,0-3-1.342-3-3V39.354c0-1.656,1.343-3,3-3h58c1.657,0,3,1.344,3,3V49.979z"/></svg>
+		</div>
+		<div class="total-newhires-container">
+			<div class="total-newhires bgTitlelightblue">
+				<SpotfireControl id="2f43aa5b683d4f299306c856bd9be37d" />
+			</div>
+			<div class="newHireFonts">Total</div>
+		</div>
+</div>
+</div>
+</div>
+<!-- total open positions sum end -->
+
+<!--Open positions pyramid starts -->
+<div class="width-helper">
+ <div class="head-count-pyramid">
+                        <div class="pyramid-wrapper ops-pyramid-wrapper">
+                            <div class="pyramid-heading pyramid-title-color">
+                                Open Positions Pyramid
+                            </div>
+                            <div class="pyramid-values-wrapper">
+				<div id="opsCwr" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="c4c62ebd439a4c35b5c71dc0a7e90cc2" /></div>
+                                    <div class="pyramid-bar tenure-bar-color4">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="6cffb556ceb44cd4810a9b700c06ec77" /></div>
+                                </div>
+                                <div id="opsGrade116" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="7c145c4aec0744879ad268de9c118671" /></div>
+                                    <div class="pyramid-bar grade116">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="c6d79d2acceb4011a0d7b54df2ce36d6" /></div>
+                                </div>
+                                <div id="opsGrade112" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="a0c3d77a09234a10bb42dacb6d096438" /></div>
+                                    <div class="pyramid-bar grade112">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="12182f53b5bf4a098ca0c8653b60dbbb" /></div>
+                                </div>
+                                <div id="opsGrade111" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="593203e20ac0416f86bce50e3c03b525" /></div>
+                                    <div class="pyramid-bar grade111">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="8c8bf161d0434f98b0221d899b71aa21" /></div>
+                                </div>
+                                <div id="opsGrade108" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="36a898e79da54f6cb620a20c3be460b0" /></div>
+                                    <div class="pyramid-bar grade108">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="2a8adf8c6b27437abad4e56209f37d3b" /></div>
+                                </div>
+                                <div id="opsGrade101" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="f02683c6fae54eb593821b7a15fe317f" /></div>
+                                    <div class="pyramid-bar grade101">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="71bbc88ee8a44b819f23613e7615ac85" /></div>
+                                </div>
+				
+				<div class="pyramid-legendSpace">
+				<SpotfireControl id="7b59a70e30904c39a05920026ff63fb0" />101 - 108 
+				<SpotfireControl id="ca3d682017404f8e94860f62ebb8d282" />109 - 110
+				<SpotfireControl id="6e683e4afa874798adfa44a028d30d37" />111 - 112
+				<SpotfireControl id="a988b88c92ea4f24af3de1aae8bcc497" />113 - 115
+				<SpotfireControl id="33c557a6504a4a4dbfb28889ecfe6b5f" />116+
+				<SpotfireControl id="33aec30e692f4c82b355fd42c2b4e7c8" /> CWR
+
+			   </div>
+                            </div>
+			   
+                        </div>
+                    </div>
+</div>
+<!--Open positions pyramid end -->
+
+                </div>
+                <div class="content-col">
+                    <div class="card-wrapper total-head-count-card">
+                        <div class="card-head annualizedAttrition">
+                            <div class="head-text">Annualized Attrition</div>
+                            <div class="head-value">
+                                <span><SpotfireControl id="92bde686b83b4ad19996d236a9ed65c1" /></span>
+                                <span class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="val-row">
+                                <span class="val-text">CDCS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="30f5ae429c3e407db7347e8dd8506806" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">CTTS</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="41a88d39cf4e4248aef4611c088e874e" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+<div class="val-row">
+                                <span class="val-text">CORP</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="d085ec73c0e645379ee8ac4ebf4cba82" /></span>
+                                    <span class="val-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">Early Dev</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="2c4f6b992858424990734bdc41246bb8" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                            <div class="val-row">
+                                <span class="val-text">GCO</span>
+                                <span class="val">
+                                    <span><SpotfireControl id="e6c014bde6b64ec290ca87620d520594" /></span>
+                                    <span class="val-arrow down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve"><polygon points="256.5,64.5 64.5,256.5 176.5,256.5 176.5,448.5 336.5,448.5 336.5,256.5 448.5,256.5 "/></svg>
+                                    </span>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+               <!-- location metrics start -->
+<div class="width-helper">
+                <div class="location-metric-container">
+                    <div class="location-metric-heading">Location split</div>
+                    <div class="location-metric-wrapper">
+                    <div class="location-metric-item">
+                            <div class="circle loc1Border">
+				<SpotfireControl id="1c0362d4a3d74c29a5b6b79698eba573" />
+			    </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc1Bg">
+				Bangalore
+			    </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc2Border">
+				<SpotfireControl id="40633189cfeb4af18cbbd7433ef624a4" />
+			   </div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc2Bg">
+				Pune
+			</div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc3Border">
+				<SpotfireControl id="15cd33d256034b4f99ed2022953fb831" />
+			</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc3Bg">
+				Mumbai
+			  </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+
+                    <div class="location-metric-item">
+                            <div class="circle loc4Border">
+				<SpotfireControl id="5e14193fbcbc4969b6d11d84ac276c9e" />
+				</div>
+                            <div class="circle-arrow"></div>
+                        <div class="rectanle-wrapper">
+                            <div class="rectangle loc4Bg">
+				Chennai
+			 </div>
+                            <div class="rectangle-arrow"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+</div>
+                <!-- location metrics end -->
+
+ <!-- diversity start -->
+            <div class="width-helper diversity-attrition-container">
+                <div class="div-attr-wrapper">
+                    <div class="diversity-attr-heading divercity-title-color">Diversity Mix</div>
+                    <div class="diversity-attr-body">
+                        <div class="diversity-container">
+                            <div id="femaleAttrVal" class="diversity-item">
+                                <div class="diversity-img-container">
+                                    <div class="diversity-img-bg divercity-background-female">&nbsp;</div>
+                                    <img src="25cd4480caa34fd88460a4e70e543fba.png" style="border: 0; width: 47px; height: 80px;"/>
+                                </div>
+                                <div class="diver-val">
+                                    <SpotfireControl id="524fc4af88704e9b9fddb52059e57f46" />
+                                </div>
+                            </div>
+
+                            <div id="maleAttrVal" class="diversity-item">
+                                <div class="diversity-img-container">
+                                    <div class="diversity-img-bg divercity-background-male">&nbsp;</div>
+                                    <img src="b1d3f65509134525b8706d6a1d75b30b.png" style="border: 0; width: 47px; height: 80px;"/>
+                                </div>
+                                <div class="diver-val">
+                                   <SpotfireControl id="d8f7fddcf36c4683ac1f507f04be0d34" />
+                                </div>
+                            </div>
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- diversity end -->
+
+
+<!--Attrition pyramid starts -->
+<div class="width-helper">
+ <div class="head-count-pyramid">
+                        <div class="pyramid-wrapper attr-pyramid-wrapper">
+                            <div class="pyramid-heading pyramid-title-color">
+                                Annualized Attrition Pyramid
+                            </div>
+                            <div class="pyramid-values-wrapper pyramid-values-wrapper-aattrition">
+                                <div id="atrGrade116" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="1af15dc2a3274e79b9e8e58da7254817" /></div>
+                                    <div class="pyramid-bar grade116">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="8b355b117c4b4c01b98819e14d6dedd6" /></div>
+                                </div>
+                                <div id="atrGrade112" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="1dacb4381d764074801a0ef3dd3eafe5" /></div>
+                                    <div class="pyramid-bar grade112">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="daab3d2366544f4b813ce78a0574f0dc" /></div>
+                                </div>
+                                <div id="atrGrade111" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="656bdc79ac0542f3864f03eec058569d" /></div>
+                                    <div class="pyramid-bar grade111">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="853e1b48f78d4f168bacd81663f2a56d" /></div>
+                                </div>
+                                <div id="atrGrade108" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="abf7c29bdf0248a1b4b9d70c89f4a5b1" /></div>
+                                    <div class="pyramid-bar grade108">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="8338a4701fb84bb48634641b6bb425dc" /></div>
+                                </div>
+                                <div id="atrGrade101" class="pyramid-bar-wrapper">
+                                    <div class="left-val text-right"><SpotfireControl id="45a6e8cd415241848702caf7ad2260ef" /></div>
+                                    <div class="pyramid-bar grade101">&nbsp;</div>
+                                    <div class="right-val text-left"><SpotfireControl id="bf935d004178426fa66d8fe329345b6c" /></div>
+                                </div>
+				<div class="pyramid-legendSpace">
+				<SpotfireControl id="a53da9e55de94c149ba3766a108e7afa" />101 - 108 
+				<SpotfireControl id="24b4791eb24b423bb6d506a5e6f6a739" />109 - 110
+				<SpotfireControl id="e6463bfe5e954c9b8c7b7c36b6843647" />111 - 112
+				<SpotfireControl id="2321aafab3a44967a6a40221324d7308" />113 - 115
+				<SpotfireControl id="892f01444d134f85a0c62c94f35b69aa" />116+
+
+			   </div>
+                            </div>
+			   
+                        </div>
+                    </div>
+</div>
+<!--Attrition pyramid end -->
+
+                </div>
+
+            </div>
+	<!-- filters start -->
+            <div id="filters-container" class="filters-container">
+                <ul>
+			<!-- individual filter start -->
+                    <li>
+<div class="filter-item-wrapper">
+<div class="filter-item-head">
+                       <span class="filter-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink" height="22px" version="1.1" viewBox="0 0 16 16" width="22px"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#4a4a4a" id="Core" transform="translate(-424.000000, -340.000000)"><g id="refresh" transform="translate(424.000000, 340.000000)"><path d="M13.6,2.4 C12.2,0.9 10.2,0 8,0 C3.6,0 0,3.6 0,8 C0,12.4 3.6,16 8,16 C11.7,16 14.8,13.4 15.7,10 L13.6,10 C12.8,12.3 10.6,14 8,14 C4.7,14 2,11.3 2,8 C2,4.7 4.7,2 8,2 C9.7,2 11.1,2.7 12.2,3.8 L9,7 L16,7 L16,0 L13.6,2.4 L13.6,2.4 Z" id="Shape"/></g></g></g></svg>
+                        </span>
+                        <span class="filter-name">Filters</span>
+ 
+</div>
+</div>
+                    </li>
+<!-- Entitit filter end -->
+                    <li>
+<div class="filter-item-wrapper">
+<div class="filter-item-head">
+                       <span class="filter-icon">
+                           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 128 128" height="22px" id="Layer_1" version="1.1" viewBox="0 0 128 128" width="22px" xml:space="preserve"><g><g><path fill="#4a4a4a" d="M64,16L36,40h56L64,16z M64,26.539L70.375,32h-12.75L64,26.539z M112,104h-4V56h8    c3.426,0,6.473-2.18,7.574-5.422s0.02-6.828-2.695-8.922L71.66,1.953C69.273,0.648,66.637,0,64,0s-5.273,0.648-7.66,1.953    L7.121,41.656c-2.715,2.094-3.797,5.68-2.695,8.922S8.574,56,12,56h8v48h-4c-6.629,0-12,5.375-12,12s5.371,12,12,12h96    c6.629,0,12-5.375,12-12S118.629,104,112,104z M12.144,47.883L60.707,8.711C61.734,8.242,62.863,8,64,8s2.266,0.242,3.293,0.711    L116,48L12.144,47.883z M100,56v48h-8V56H100z M84,56v48h-8V56H84z M68,56v48h-8V56H68z M52,56v48h-8V56H52z M36,56v48h-8V56H36z     M112,120H16c-2.207,0-4-1.797-4-4s1.793-4,4-4h96c2.207,0,4,1.797,4,4S114.207,120,112,120z" fill="#546E7A"/></g></g></svg>
+                        </span>
+                        <span class="filter-name">Entity</span>
+			<span class="arrow">
+			<svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="menu-arrow">
+				<path fill="#4a4a4a" d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" class="_2JzwqO"></path>
+			</svg>
+			</span>
+ 
+</div>
+<div class="filter-item-body">
+<SpotfireControl id="61312863da1a451a8416318ac0da2740" />
+</div>
+</div>
+                    </li>
+                </ul>
+            </div>
+<!-- Entitit Filters end -->
+
+
+        </main>
+
+
+    </div>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#hamburger').hover(function () {
+                $(this).toggleClass('open');
+                $("#menu-container").toggleClass('open');
+                $('#menu-container .menu-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+	    $('#menu-container').hover(function () {
+                $('#hamburger').toggleClass('open');
+                $("#menu-container").toggleClass('open');
+                $('#menu-container .menu-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+            $('.filter-icon-container').click(function () {
+                $("#filters-container").toggleClass('open');
+                $('#filters-container .filter-name').each(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+            $('.filters-container').hover(function () {
+                $("#filters-container").addClass('open');
+                $('#filters-container .filter-name').each(function () {
+                    $(this).addClass('open');
+                });
+            });
+	$('.filters-container').mouseleave(function () {
+		$("#filters-container").removeClass('open');
+                $('#filters-container .filter-name').each(function () {
+                    $(this).removeClass('open');
+                });
+                $('.filter-item-wrapper ').each(function () {
+                    $(this).removeClass('open');
+                });
+            });
+        });
+    </script>
+
+	<script>
+// pyramid head count start
+		var grade101Val = '';
+		var grade108Val = '';
+		var grade111Val = '';
+		var grade112Val = '';
+		var grade116Val = '';
+
+	$("#grade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade101Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade108Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade111Val = parseInt($(this).text());
+		redrawPyramid();	    
+	     }
+	})
+	$("#grade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade112Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+	$("#grade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		grade116Val = parseInt($(this).text());
+		redrawPyramid();
+	    }
+	})
+
+	function redrawPyramid() {
+		if(!isNaN(grade101Val) && !isNaN(grade108Val) && !isNaN(grade111Val) && !isNaN(grade112Val) && !isNaN(grade116Val)
+
+) {
+
+var maxGradVal = Math.max(grade108Val,grade111Val,grade112Val,grade116Val,grade101Val);
+	$("#grade101 .pyramid-bar").css("width", ((grade101Val/maxGradVal) * 100) + '%');
+$("#grade108 .pyramid-bar").css("width", ((grade108Val/maxGradVal) * 100) + '%');
+$("#grade111 .pyramid-bar").css("width", ((grade111Val/maxGradVal) * 100) + '%');
+$("#grade112 .pyramid-bar").css("width", ((grade112Val/maxGradVal) * 100) + '%');
+$("#grade116 .pyramid-bar").css("width", ((grade116Val/maxGradVal) * 100) + '%');
+	
+		}
+
+	}
+// pyramid head count end
+</script>
+
+<script>
+// tenure range start
+	// tenure range start
+		var tenure16Val = '';
+		var tenure11Val = '';
+		var tenure6Val = '';
+		var tenure3Val = '';
+		var tenure1Val = '';
+		var tenure0Val = '';
+
+	$("#tenure16 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure16Val = parseInt($(this).text());
+		redrawTenure();
+	    }
+	})
+	$("#tenure11 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure11Val = parseInt($(this).text());
+		redrawTenure();
+	    }
+	})
+	$("#tenure6 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure6Val = parseInt($(this).text());
+		redrawTenure();	    
+	     }
+	})
+	$("#tenure3 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure3Val = parseInt($(this).text());
+		redrawTenure();
+	    }
+	})
+	$("#tenure1 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure1Val = parseInt($(this).text());
+		redrawTenure();
+	    }
+	})
+	$("#tenure0 .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenure0Val = parseInt($(this).text());
+		redrawTenure();
+	    }
+	})
+
+	function redrawTenure() {
+
+		if(!isNaN(tenure0Val) && !isNaN(tenure16Val) && !isNaN(tenure11Val) && !isNaN(tenure6Val) && !isNaN(tenure3Val) && !isNaN(tenure1Val)
+
+) {
+
+var maxTenureVal = Math.max(tenure0Val,tenure16Val,tenure11Val,tenure6Val, tenure3Val, tenure1Val);
+
+	$("#tenure0 .tenurebar").css("width", ((tenure0Val/maxTenureVal) * 100) + '%');
+$("#tenure16 .tenurebar").css("width", ((tenure16Val/maxTenureVal) * 100) + '%');
+	$("#tenure11 .tenurebar").css("width", ((tenure11Val/maxTenureVal) * 100) + '%');
+$("#tenure6 .tenurebar").css("width", ((tenure6Val/maxTenureVal) * 100) + '%');
+$("#tenure3 .tenurebar").css("width", ((tenure3Val/maxTenureVal) * 100) + '%');
+$("#tenure1 .tenurebar").css("width", ((tenure1Val/maxTenureVal) * 100) + '%');
+	
+		}
+
+	}
+
+
+
+
+// tenure range end
+</script>
+
+
+
+
+<script>
+// diversity start
+var tenureDiversityMale = 0;
+var tenureDiversityFemale = 0;
+	$("#femaleTenureVal .diver-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenureDiversityFemale = parseInt($(this).text());
+		redrawTenureDiversity();
+	    }
+	})
+	$("#maleTenureVal .diver-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		tenureDiversityMale = parseInt($(this).text());
+		redrawTenureDiversity();
+	    }
+	})
+
+function redrawTenureDiversity() {
+	
+	if(!isNaN(tenureDiversityMale) && !isNaN(tenureDiversityFemale)) {
+		$("#femaleTenureVal .diversity-img-bg").css("height", tenureDiversityFemale + '%');
+		$("#maleTenureVal .diversity-img-bg").css("height",  tenureDiversityMale + '%');
+	}
+}
+
+
+// diversity end
+
+</script>
+
+<script>
+// offer acceptancve & Declined start
+var acceptance = 0;
+var decline = 0;
+	$("#acceptance .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		acceptance = parseInt($(this).text());
+		redrawAcceptanceRatio();
+	    }
+	})
+	$("#decline .tenureval").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		decline = parseInt($(this).text());
+		redrawAcceptanceRatio();
+	    }
+	})
+
+function redrawAcceptanceRatio(){
+	
+	if(!isNaN(acceptance) && !isNaN(decline)) {
+		$("#acceptance .tenurebar").css("width", acceptance + '%');
+		$("#decline .tenurebar").css("width",  decline + '%');
+	}
+}
+
+
+// offer acceptancve & Declined start
+
+
+
+
+</script>
+
+
+<script>
+    // diversity start newhires
+    var newHireDiversityMale = 0;
+    var newHireDiversityFemale = 0;
+    $("#femaleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            newHireDiversityFemale = parseInt($(this).text());
+        redrawNewHireDiversity();
+        }
+    })
+    $("#maleNewhireVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            newHireDiversityMale = parseInt($(this).text());
+            redrawNewHireDiversity();
+        }
+    })
+    
+    function redrawNewHireDiversity() {
+    
+    if(!isNaN(newHireDiversityMale) && !isNaN(newHireDiversityFemale)) {
+        $("#femaleNewhireVal .diversity-img-bg").css("height", newHireDiversityFemale + '%');
+        $("#maleNewhireVal .diversity-img-bg").css("height",  newHireDiversityMale + '%');
+    }
+    }
+    
+    
+    // diversity end new hires
+    
+    </script>
+
+<script>
+    // diversity start attrition
+    var attritionDiversityMale = 0;
+    var attritionDiversityFemale = 0;
+    $("#femaleAttrVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            attritionDiversityFemale = parseInt($(this).text());
+            redrawAttritionDiversity();
+        }
+    })
+    $("#maleAttrVal .diver-val").on('DOMSubtreeModified', function() {
+        if (!isNaN(parseInt($(this).text()))) {
+            attritionDiversityMale = parseInt($(this).text());
+            redrawAttritionDiversity();
+        }
+    })
+
+    function redrawAttritionDiversity() {
+
+    if(!isNaN(attritionDiversityMale) && !isNaN(attritionDiversityFemale)) {
+        $("#femaleAttrVal .diversity-img-bg").css("height", attritionDiversityFemale + '%');
+        $("#maleAttrVal .diversity-img-bg").css("height",  attritionDiversityMale + '%');
+    }
+    }
+
+
+    // diversity end attrition
+
+    </script>
+
+<script>
+// Open Positions pyramid
+		var opsGrade101Val = '';
+		var opsGrade108Val = '';
+		var opsGrade111Val = '';
+		var opsGrade112Val = '';
+		var opsGrade116Val = '';
+        var opsCwrVal = '';
+
+	$("#opsGrade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade101Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade108Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade111Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	     }
+	})
+	$("#opsGrade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade112Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+	$("#opsGrade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		opsGrade116Val = parseInt($(this).text());
+		redrawOpsPyramid();
+	    }
+	})
+    $("#opsCwr .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+            opsCwrVal = parseInt($(this).text());
+		    redrawOpsPyramid();
+	    }
+	})
+
+	function redrawOpsPyramid() {
+		if(!isNaN(opsGrade101Val) && !isNaN(opsGrade108Val) && !isNaN(opsGrade111Val) && !isNaN(opsGrade112Val) && !isNaN(opsGrade116Val) && !isNaN(opsCwrVal)
+
+) {
+
+var maxopsGradVal = Math.max(opsGrade108Val,opsGrade111Val,opsGrade112Val,opsGrade116Val,opsGrade101Val);
+	$("#opsGrade101 .pyramid-bar").css("width", ((opsGrade101Val/maxopsGradVal) * 100) + '%');
+$("#opsGrade108 .pyramid-bar").css("width", ((opsGrade108Val/maxopsGradVal) * 100) + '%');
+$("#opsGrade111 .pyramid-bar").css("width", ((opsGrade111Val/maxopsGradVal) * 100) + '%');
+$("#opsGrade112 .pyramid-bar").css("width", ((opsGrade112Val/maxopsGradVal) * 100) + '%');
+$("#opsGrade116 .pyramid-bar").css("width", ((opsGrade116Val/maxopsGradVal) * 100) + '%');
+$("#opsCwr .pyramid-bar").css("width", ((opsCwrVal/maxopsGradVal) * 100) + '%');
+		}
+
+	}
+// Open Positions pyramid 
+</script>
+
+<script>
+// Attrition pyramid end
+		var atrGrade101Val = '';
+		var atrGrade108Val = '';
+		var atrGrade111Val = '';
+		var atrGrade112Val = '';
+		var atrGrade116Val = '';
+
+	$("#atrGrade101 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade101Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade108 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade108Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade111 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade111Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	     }
+	})
+	$("#atrGrade112 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade112Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+	$("#atrGrade116 .left-val").on('DOMSubtreeModified', function() {
+	    if (!isNaN(parseInt($(this).text()))) {
+		atrGrade116Val = parseInt($(this).text());
+		redrawAttrPyramid();
+	    }
+	})
+
+	function redrawAttrPyramid() {
+		if(!isNaN(atrGrade101Val) && !isNaN(atrGrade108Val) && !isNaN(atrGrade111Val) && !isNaN(atrGrade112Val) && !isNaN(atrGrade116Val) && !isNaN(opsCwrVal)
+
+) {
+
+var maxAtrGradVal = Math.max(atrGrade108Val,atrGrade111Val,atrGrade112Val,atrGrade116Val,atrGrade101Val);
+	$("#atrGrade101 .pyramid-bar").css("width", ((atrGrade101Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade108 .pyramid-bar").css("width", ((atrGrade108Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade111 .pyramid-bar").css("width", ((atrGrade111Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade112 .pyramid-bar").css("width", ((atrGrade112Val/maxAtrGradVal) * 100) + '%');
+$("#atrGrade116 .pyramid-bar").css("width", ((atrGrade116Val/maxAtrGradVal) * 100) + '%');
+		}
+
+	}
+// Attrition pyramid end
+</script>
+
+<script>
+    // source mix start
+
+
+    var srcMxMap = [
+        {'srcmxSocialMedia': {label: 'Social Media', val: ''}}, 
+        {'srcmxDirect': {label: 'Direct', val: ''}},
+        {'srcmxReferal': {label: 'Employee Referal', val: ''}}, 
+        {'srcmxInternal': {label: 'Internal', val: ''}},
+        {'srcmxAgency': {label: 'Agency', val: ''}},
+        {'srcmxColleag': {label: 'College/Grad', val: ''}},
+        {'srcmxTemp': {label: 'Temp', val: ''}}, 
+        {'srcmxFormer': {label: 'Former Employee', val: ''}}
+    ];
+
+    $("#srcmxSocialMedia").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxSocialMedia') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxDirect").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxDirect') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxReferal").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxReferal') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxInternal").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxInternal') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxAgency").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxAgency') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxColleag").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxColleag') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxTemp").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxTemp') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    $("#srcmxFormer").on('DOMSubtreeModified', function () {
+        if (!isNaN(parseInt($(this).text()))) {
+            for(var i=0; i< srcMxMap.length; i++) {
+                var srcMxEle = srcMxMap[i];
+                var srcMxEleKey = Object.keys(srcMxEle)[0];
+                if(srcMxEleKey == 'srcmxFormer') {
+                    srcMxMap[i][srcMxEleKey]['val'] = parseInt($(this).text());
+                    break;
+                }
+            }
+            redrawSrcMx();
+        }
+    })
+
+    function redrawSrcMx() {
+	var isAllValsPresent = true;
+	for(var k=0; k<srcMxMap.length; k++) {	
+		var srcRawMxItem = srcMxMap[k];
+                var srcRawMxItemKey = Object.keys(srcRawMxItem)[0];
+                var srcRawMxItemVal = srcRawMxItem[srcRawMxItemKey]['val'];
+		if(isNaN(srcRawMxItemVal)) {
+			isAllValsPresent = false;
+		}
+	}
+
+        if(isAllValsPresent) {
+
+            var sortedSrcMx = srcMxMap.sort((a,b) => {
+                var aKey = Object.keys(a)[0];
+                var bKey = Object.keys(b)[0];
+                var aEle = a[aKey];
+                var bEle = b[bKey];
+                return bEle['val'] - aEle['val']
+            })
+		var srcMxMaxItem = sortedSrcMx[0];
+                var srcMxMaxItemKey = Object.keys(srcMxMaxItem)[0];
+                var srcMxMaxItemVal = srcMxMaxItem[srcMxMaxItemKey]['val'];
+		
+		$('.source-mix-body').html('');
+            for(var i=0; i<sortedSrcMx.length; i++) {
+                var srcMxItem = sortedSrcMx[i];
+                var srcMxItemKey = Object.keys(srcMxItem)[0];
+                var srcMxItemVal = srcMxItem[srcMxItemKey]['val'];
+                var srcMxItemLabel = srcMxItem[srcMxItemKey]['label'];
+                var rowSrxMx = $('<div>', {
+                    class: 'source-mix-row'
+                }).appendTo('.source-mix-body');
+
+                $('<div>', {
+                    class: 'source-mix-label',
+                    html: srcMxItemLabel,
+                }).appendTo(rowSrxMx);
+                
+                $('<div>', {
+                    class: 'source-mix-axes',
+                    html: ' ',
+                }).appendTo(rowSrxMx);
+
+                var barContainer = $('<div>', {
+                    class: 'source-mix-bar-container tenure-bar-color4',
+                    html: ' ',
+                    
+                }).appendTo(rowSrxMx);
+                barContainer.css({'flex-grow': srcMxItemVal/srcMxMaxItemVal});
+
+                $('<div>', {
+                    class: 'source-mix-val',
+                    html: srcMxItemVal ? srcMxItemVal + '%' : '0%'
+                }).appendTo(rowSrxMx);
+            }
+
+        }
+    }
+
+    // source mix end 
+    
+
+    </script>
+
+<script>
+	$('.filter-item-head').on('click', function(event) {
+		$(event.target).closest('.filter-item-wrapper').toggleClass('open');
+		console.log($(event.target).parent());
+	})
+</script>
+
+</body>
+
