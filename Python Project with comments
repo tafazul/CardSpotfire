@@ -1,0 +1,107 @@
+import docx
+import pandas as pd
+from pandas import DataFrame
+from docx import Document
+import os
+from pathlib import Path
+import glob
+import openpyxl
+
+#create an empty dataframe with coloumn names 
+df=pd.DataFrame(columns=['Sponsor','Protocol No.','Covance Study ID','Date Listings Requested and By','Listings to run per Database Listing Specification','Version of listing','Date Listings Required By','Subjects/Patients to be included(check all that apply)','Report Format(check all that apply)'])
+#defining a function to fetch tables from text documents
+def final_tab():
+    section = doc.sections[0]  #Accessing Header section of the document
+    header = section.header  #Fetching header fron section of the document
+    tables = [] #Creating a list named tables
+    for table in header.tables:   #creating for loop to access the text from header table
+        list = [['' for i in range(len(table.columns))] for j in range(len(table.rows))]
+        for i, row in enumerate(table.rows):
+            for j, cell in enumerate(row.cells):
+                if cell.text:
+                    list[i][j] = cell.text #pushing the text from header table into a list
+        df=pd.DataFrame(list)  #creating a pandas dataframe using the list           
+    out=df.T  #transposing the dataframe
+    out[2]=""   #creating a new coloumn in the table out
+    out.at[0,2]=out.at[2,1]  #copy the element at '2'nd row and 1st coloumn to the '0'th row and 2nd coloumn 
+    out.at[1,2]=out.at[3,1]  #copy the element at '3'rd row and 1st coloumn to the '1'st row and 2nd coloumn
+    out.drop([2,3],inplace=True)  #remove 3rd row
+    headers = out.iloc[0] #convert the 0th row into header
+    header_table  = pd.DataFrame(out.values[1:], columns=headers) #create a new dataframe with '0'th row as header
+    
+     #RENAMING THE HEADERS
+    # create a dictionary
+    # key = old name
+    # value = new name
+    dict = {'Sponsor:': 'Sponsor',
+            'Protocol No.:': 'Protocol No.',
+            'Covance Study ID:': 'Covance Study ID'}
+    # call rename () method
+    header_table.rename(columns=dict,inplace=True) 
+    tables = []
+    #FOR LOOP TO ACCESS THE TEXT FROM TABLE INTO A LIST
+    for table in doc.tables:
+        list = [['' for i in range(len(table.columns))] for j in range(len(table.rows))]
+        for i, row in enumerate(table.rows):
+            for j, cell in enumerate(row.cells):
+                if cell.text:
+                    list[i][j] = cell.text
+        new_data=pd.DataFrame(list) #CONVERTING LIST INTO DATAFRAME           
+        tables.append(new_data) #APPEND THE DATA IN THE LIST TO THE TABLE
+    doc_table=new_data.T # tansposing the dataframe
+    #Convert the first row to column header
+    header =doc_table.iloc[0]
+    doc_table=pd.DataFrame(doc_table.values[1:], columns=header)
+
+    #RENAMING THE HEADER
+    # create a dictionary
+    # key = old name
+    # value = new name
+    dict = {'Date Listings Requested and By:':'Date Listings Requested and By',
+            'Listings to run per Database Listing Specification:': 'Listings to run per Database Listing Specification',
+            'Version of listing': 'Version of listing',
+            'Date Listings Required By:': 'Date Listings Required By',
+            'Subjects/Patients to be included:\n(check all that apply)': 'Subjects/Patients to be included(check all that apply)',
+            'Report Format:\n(check all that apply)': 'Report Format(check all that apply)'}
+    # call rename () method
+    doc_table.rename(columns=dict,inplace=True)
+    #REMOVING \n charaters FROM TABLE
+    doc_table=doc_table.replace('\n',' ', regex=True)
+    #creating a list with names of tables to combine
+    Tables = [header_table,doc_table]
+    #Using CONCAT FUNCTION TO COMBINE THE TABLES
+    final_table=pd.concat(Tables)
+    #CREATING INDEX VALUES TO ROWS OF THE TABLE
+    final_table.index=range(2)
+    #COPY THE VALUE IN 2ND ROW AND 4TH COLOUMN TO 1ST ROW AND 4TH COLOUMN
+    final_table.loc[0,['Date Listings Requested and By']]=final_table.loc[1,['Date Listings Requested and By']]
+    #COPY THE VALUE IN 2ND ROW AND 5TH COLOUMN TO 1ST ROW AND 5TH COLOUMN
+    final_table.loc[0,['Listings to run per Database Listing Specification']]=final_table.loc[1,['Listings to run per Database Listing Specification']]
+    #COPY THE VALUE IN 2ND ROW AND 6TH COLOUMN TO 1ST ROW AND 6TH COLOUMN
+    final_table.loc[0,['Version of listing']]=final_table.loc[1,['Version of listing']]
+    #COPY THE VALUE IN 2ND ROW AND 7TH COLOUMN TO 1ST ROW AND 7TH COLOUMN
+    final_table.loc[0,['Date Listings Required By']]=final_table.loc[1,['Date Listings Required By']]
+    #COPY THE VALUE IN 2ND ROW AND 8TH COLOUMN TO 1ST ROW AND 8TH COLOUMN
+    final_table.loc[0,['Subjects/Patients to be included(check all that apply)']]=final_table.loc[1,['Subjects/Patients to be included(check all that apply)']]
+    #COPY THE VALUE IN 2ND ROW AND 9TH COLOUMN TO 1ST ROW AND 9TH COLOUMN
+    final_table.loc[0,['Report Format(check all that apply)']]=final_table.loc[1,['Report Format(check all that apply)']]
+    #DELETE THE ROW WITH INDEX 1
+    final_table = final_table.drop(labels=1, axis=0)
+    #Assign the table to a variable
+    x=final_table
+    return x
+#FOR LOOP TO CALL FINAL FUNCTION ON EVERY TEXT FILE OF THE FOLDER IN THE SPECIFIED PATH
+for name in glob.glob('C:\\Users\\Ahil Rayyan\\Desktop\\Email Automation/*.docx'):
+    doc = Document(name)
+    final_tab()
+    y=final_tab()
+    df=df.append(y)
+    
+    
+
+df
+
+#EXPORTING PYTHON CODE OUTPUT TO AN EXCEL FILE
+file_name='C:\\Users\\Ahil Rayyan\\Desktop\\Email Automation\\automation table.xlsx'
+
+df.to_excel(r'C:\\Users\\Ahil Rayyan\\Desktop\\Email Automation\\ResultOutput.xlsx', index = False)
